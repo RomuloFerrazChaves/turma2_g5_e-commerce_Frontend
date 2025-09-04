@@ -1,0 +1,25 @@
+<div id="header">
+
+  <div class="head">
+    <h1>PROJETO DESENVOLVIDO POR ESTUDANTES DA PUC MINAS</h1>
+  </div>
+
+  <div class="navbar">
+    <h1 (click)="navigateToHome()">ESTANTE INFINITA</h1>
+    <div class="menu">
+      <button matIconButton [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu" xPosition="after">
+        <button mat-menu-item>
+          <mat-icon>account_circle</mat-icon>
+          <span>Perfil</span>
+        </button>
+         <button mat-menu-item>
+          <mat-icon>logout</mat-icon>
+          <span>Sair</span>
+        </button>
+      </mat-menu>
+    </div>
+  </div>
+</div>

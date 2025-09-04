@@ -1,0 +1,69 @@
+<app-header></app-header>
+
+<div id="body">
+
+  <div class="book-spec">
+    <div class="img"></div>
+    <div class="spec">
+      <h1>Título do Livro</h1>
+      <p>Autor: Nome do Autor</p>
+      <p>Descrição: Uma breve descrição do livro.</p>
+      <p>Gêneros:</p>
+      <mat-chip-set>
+        <mat-chip *ngFor="let genero of generos">{{genero.Nome}}</mat-chip>
+      </mat-chip-set>
+    </div>
+  </div>
+
+  <button class="new-comment">
+    Adicionar Comentário
+  </button>
+
+  <div class="comments">
+    <h1>Comentários</h1>
+
+    <div class="dialog-box">
+
+      <div class="comment">
+        <div class="profile"></div>
+        <div class="info">
+          <p>Rômulo Ferraz</p>
+          <p>Este é um comentário sobre o livro.</p>
+        </div>
+      </div>
+
+      <div class="comment">
+        <div class="profile"></div>
+        <div class="info">
+          <p>Rômulo Ferraz</p>
+          <p>Este é um comentário sobre o livro.</p>
+        </div>
+      </div>
+
+      <div class="comment">
+        <div class="profile"></div>
+        <div class="info">
+          <p>Rômulo Ferraz</p>
+          <p>Este é um comentário sobre o livro.</p>
+        </div>
+      </div>
+
+      <div class="comment">
+        <div class="profile"></div>
+        <div class="info">
+          <p>Rômulo Ferraz</p>
+          <p>Este é um comentário sobre o livro.</p>
+        </div>
+      </div>
+
+      <div class="comment">
+        <div class="profile"></div>
+        <div class="info">
+          <p>Rômulo Ferraz</p>
+          <p>Este é um comentário sobre o livro.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+<section id="page">
+  <app-header></app-header>
+
+  <div class="hero">
+    <h1>Bem-vindo à Estante Infinita</h1>
+    <p>Descubra, leia e compartilhe livros gratuitamente!</p>
+  </div>
+
+  <div id="body">
+
+    <div class="filters">
+      <div class="genero" *ngFor="let genero of generos">
+        <div class="img" [style.background-image]="'url(' + genero.Imagem + ')'"></div>
+        <h1>{{genero.Nome}}</h1>
+      </div>
+    </div>
+
+    <div class="search-bar">
+      <input type="text" placeholder="Pesquisar livros por nome..."/>
+      <img src="../../../assets/icons/search-icon.svg" alt="">
+    </div>
+
+    <div class="book-grid">
+      <div class="book" *ngFor="let book of books" (click)="RedirectToBookPage()">
+        <div class="img"></div>
+        <div class="description">
+          <h1>{{book.Title}}</h1>
+          <h2>{{book.Author}}</h2>
+          <p>{{book.Description}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <app-footer></app-footer>
+
+</section>
+
+
