@@ -1,19 +1,21 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { urlDev } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class AdminService {
+export class SiteService {
 
   constructor(private http: HttpClient,) { }
 
 
-  getMe() {
-    return this.http.get(`${urlDev}/me`);
+  signUp(user: any) {
+    return this.http.post(`${urlDev}/auth/register`, user);
   }
 
+  signIn(user: any) {
+    return this.http.post(`${urlDev}/auth/login`, user);
+  }
 }

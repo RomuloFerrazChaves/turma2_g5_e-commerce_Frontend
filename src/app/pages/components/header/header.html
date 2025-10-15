@@ -11,11 +11,11 @@
         <mat-icon>menu</mat-icon>
       </button>
       <mat-menu #menu="matMenu" xPosition="after">
-        <button mat-menu-item>
+        <button mat-menu-item >
           <mat-icon>account_circle</mat-icon>
           <span>Perfil</span>
         </button>
-         <button mat-menu-item>
+         <button mat-menu-item (click)="redirectLogin()">
           <mat-icon>logout</mat-icon>
           <span>Sair</span>
         </button>

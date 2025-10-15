@@ -39,8 +39,238 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 
+
+.col-1 {
+  width: 8.33%;
+  box-sizing: border-box;
+  padding-right: 0.8%;
+}
+
+.col-2 {
+  width: 16.66%;
+  box-sizing: border-box;
+  padding-right: 0.8%;
+}
+
+.col-3 {
+  width: 25%;
+  box-sizing: border-box;
+  padding-right: 0.8%;
+}
+
+.col-4 {
+  width: 33.33%;
+  box-sizing: border-box;
+  padding-right: 0.8%;
+}
+
+.col-5 {
+  width: 41.66%;
+  box-sizing: border-box;
+  padding-right: 0.8%;
+}
+
+.col-6 {
+  width: 50%;
+  box-sizing: border-box;
+  padding-right: 0.8%;
+  ;
+}
+
+.col-7 {
+  width: 58.33%;
+  box-sizing: border-box;
+  padding-right: 0.8%;
+}
+
+.col-8 {
+  width: 66.66%;
+  box-sizing: border-box;
+  padding-right: 0.8%;
+}
+
+.col-9 {
+  width: 75%;
+  box-sizing: border-box;
+  padding-right: 0.8%;
+}
+
+.col-10 {
+  width: 83.33%;
+  box-sizing: border-box;
+  padding-right: 0.8%;
+}
+
+.col-11 {
+  width: 91.66%;
+  box-sizing: border-box;
+  padding-right: 0.8%;
+}
+
+.col-12 {
+  width: 100%;
+  box-sizing: border-box;
+  padding-right: 0.8%;
+}
+.col-1 {
+  width: 8.33%;
+  box-sizing: border-box;
+  padding-right: 0.8%;
+}
+
+.col-2 {
+  width: 16.66%;
+  box-sizing: border-box;
+  padding-right: 0.8%;
+}
+
+.col-3 {
+  width: 25%;
+  box-sizing: border-box;
+  padding-right: 0.8%;
+}
+
+.col-4 {
+  width: 33.33%;
+  box-sizing: border-box;
+  padding-right: 0.8%;
+}
+
+.col-5 {
+  width: 41.66%;
+  box-sizing: border-box;
+  padding-right: 0.8%;
+}
+
+.col-6 {
+  width: 50%;
+  box-sizing: border-box;
+  padding-right: 0.8%;
+  ;
+}
+
+.col-7 {
+  width: 58.33%;
+  box-sizing: border-box;
+  padding-right: 0.8%;
+}
+
+.col-8 {
+  width: 66.66%;
+  box-sizing: border-box;
+  padding-right: 0.8%;
+}
+
+.col-9 {
+  width: 75%;
+  box-sizing: border-box;
+  padding-right: 0.8%;
+}
+
+.col-10 {
+  width: 83.33%;
+  box-sizing: border-box;
+  padding-right: 0.8%;
+}
+
+.col-11 {
+  width: 91.66%;
+  box-sizing: border-box;
+  padding-right: 0.8%;
+}
+
+.col-12 {
+  width: 100%;
+  box-sizing: border-box;
+  padding-right: 0.8%;
+}
+
+
+
 :root {
-  --primary-color: #0c0d13;   /* branco no centro */
-  --secondary-color:    #af2d6a;   /* cinza intermediário */
-  --terciary-color:   #EEEEEE;   /* cinza escuro nas bordas */
+  --primary-color: #0c0d13;
+  --secondary-color:    #FFFFFF;
+  --terciary-color:   #af2d6a;
+}
+
+
+.botao-primario {
+  background-color: white;
+  color: var(--terciary-color);
+  border-color: var(--terciary-color);
+  border-radius: 10px;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  outline: none;
+  transition: all ease 0.2s;
+  &:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    scale: 1.01;
+  }
+}
+
+.botao-secundario {
+  background-color: white;
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+  border-radius: 10px;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  outline: none;
+  transition: all ease 0.2s;
+  &:hover {
+    scale: 1.01;
+  }
+}
+
+.formulario {
+  mat-form-field {
+    .mat-mdc-text-field-wrapper {
+      padding-right: 10px !important;
+    }
+
+    .mat-mdc-icon-button {
+      color: var(--secondary-color);
+    }
+
+    .mdc-notched-outline {
+      border-radius: 8px !important;
+
+      .mdc-notched-outline__leading {
+        border-radius: 8px 0 0 8px;
+        border-color: var(--secondary-color);
+      }
+
+      .mdc-notched-outline__notch {
+        border-color: var(--secondary-color);
+      }
+
+      .mdc-notched-outline__trailing {
+        border-radius: 0 8px 8px 0;
+        border-color: var(--secondary-color);
+      }
+
+    }
+
+    .mdc-text-field--outlined.mdc-text-field--disabled .mdc-text-field__input {
+      color: #8C8B8B;
+    }
+
+    .mdc-text-field--disabled {
+      .mdc-notched-outline {
+        border-radius: 8px !important;
+        background-color: #E7E7E7;
+        z-index: -10;
+      }
+
+    }
+
+  }
 }

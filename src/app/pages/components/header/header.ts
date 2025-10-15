@@ -18,4 +18,8 @@ export class Header {
   navigateToHome() {
     this.router.navigateByUrl('/home');
   }
+
+  redirectLogin() {
+    this.router.navigateByUrl('/login');
+  }
 }

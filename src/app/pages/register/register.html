@@ -6,8 +6,13 @@
 
   <div class="form">
     <div class="container-login">
-    <h1>Bem-vindo de volta!</h1>
-    <form [formGroup]="formLogin" class="formulario">
+    <h1>Seja Bem-Vindo!</h1>
+    <form [formGroup]="formCadastro" class="formulario">
+
+        <mat-form-field class="input">
+          <mat-label style="color: #8C8B8B;">NOME</mat-label>
+          <input matInput formControlName="nome" placeholder="Informe seu nome" autocomplete="off">
+        </mat-form-field>
 
         <mat-form-field class="input">
           <mat-label style="color: #8C8B8B;">EMAIL</mat-label>
@@ -21,10 +26,11 @@
         </mat-form-field>
 
         <div class="botoes">
-          <button class="botao-primario col-9" type="submit" (click)="login()">Entrar</button>
-          <p (click)="redirectRegister()">Não possui uma conta? Clique aqui!</p>
+          <button class="botao-secundario col-9" type="button" (click)="cadastro()">Cadastrar</button>
+          <p (click)="redirectLogin()">Já possui uma conta? Clique aqui!</p>
         </div>
       </form>
   </div>
   </div>
+
 </div>
