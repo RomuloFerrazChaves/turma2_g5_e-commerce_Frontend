@@ -1,3 +1,4 @@
+import { SiteService } from './../site.service';
 import { Component } from '@angular/core';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
@@ -28,28 +29,31 @@ export class Home {
       { Nome: 'Comédia', Imagem: '../../../assets/icons/comedy.svg' }
   ];
 
-  public books: any[] = [
-      { Title: 'Ficção', Author: 'Autor 1', Description: 'Descrição do Livro' },
-      { Title: 'Não-ficção', Author: 'Autor 2', Description: 'Descrição do Livro' },
-      { Title: 'Fantasia', Author: 'Autor 3', Description: 'Descrição do Livro' },
-      { Title: 'Romance', Author: 'Autor 4', Description: 'Descrição do Livro' },
-      { Title: 'Mistério', Author: 'Autor 5', Description: 'Descrição do Livro' },
-      { Title: 'Terror', Author: 'Autor 6', Description: 'Descrição do Livro' },
-      { Title: 'Aventura', Author: 'Autor 7', Description: 'Descrição do Livro' },
-
-      { Title: 'Ficção', Author: 'Autor 1', Description: 'Descrição do Livro' },
-      { Title: 'Não-ficção', Author: 'Autor 2', Description: 'Descrição do Livro' },
-      { Title: 'Fantasia', Author: 'Autor 3', Description: 'Descrição do Livro' },
-      { Title: 'Romance', Author: 'Autor 4', Description: 'Descrição do Livro' },
-      { Title: 'Mistério', Author: 'Autor 5', Description: 'Descrição do Livro' },
-  ];
+  public books: any[] = [];
 
   constructor(
     private router: Router,
+    private SiteService: SiteService,
   ) {}
 
+  ngOnInit():void {
+    this.PopulaAnuncio();
+  }
 
-  RedirectToBookPage() {
-      this.router.navigateByUrl('/book-page');
+
+  PopulaAnuncio() {
+     this.SiteService.getAnuncios().subscribe({
+        error: error => {
+          console.log('erro: ', error)
+        },
+        next: (rs: any) => {
+          console.log('rs: ', rs)
+          this.books = rs;
+        }
+      })
+  }
+
+  RedirectToBookPage(id: string) {
+      this.router.navigate([`/book-page/${id}`]);
   }
 }

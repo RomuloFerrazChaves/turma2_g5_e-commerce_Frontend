@@ -21,14 +21,20 @@
     </div>
 
     <div class="book-grid">
-      <div class="book" *ngFor="let book of books" (click)="RedirectToBookPage()">
+
+      <div class="book" *ngFor="let book of books" (click)="RedirectToBookPage(book.id)">
         <div class="img"></div>
         <div class="description">
-          <h1>{{book.Title}}</h1>
-          <h2>{{book.Author}}</h2>
-          <p>{{book.Description}}</p>
+          <h1>{{book.titulo}}</h1>
+          <h2>{{book.autor}}</h2>
+          <p>{{book.descricao}}</p>
+        </div>
+        <div class="genero">
+          <h3>{{book.genero}}</h3>
         </div>
       </div>
+
+
     </div>
   </div>
 

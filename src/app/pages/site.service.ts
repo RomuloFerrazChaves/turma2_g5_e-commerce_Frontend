@@ -18,4 +18,16 @@ export class SiteService {
   signIn(user: any) {
     return this.http.post(`${urlDev}/auth/login`, user);
   }
+
+  getAnuncios() {
+    return this.http.get(`${urlDev}/anuncios/getAllAnuncios`);
+  }
+
+  getAnuncioById(AnuncioId: string) {
+    return this.http.get(`${urlDev}/anuncios/getAnuncioById/${AnuncioId}`);
+  }
+
+  populaComments(AnuncioId: string) {
+    return this.http.get(`${urlDev}/comentarios/listByAnuncio/${AnuncioId}`);
+  }
 }

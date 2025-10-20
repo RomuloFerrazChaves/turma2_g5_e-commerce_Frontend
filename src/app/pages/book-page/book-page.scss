@@ -14,6 +14,10 @@
       border: 4px solid #0c0d13;
       width: 65%;
       height: 500px;
+      background-image: url('../../../assets/images/bookCap.png');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
     }
 
     .spec {
@@ -50,7 +54,8 @@
     transition: background-color 0.3s;
 
     &:hover {
-      background-color: #EEE;
+      background-color: var(--terciary-color);
+      color: white;
     }
   }
 
@@ -84,6 +89,10 @@
           width: 50px;
           height: 50px;
           border: 1px solid #0c0d13;
+          background-image: url('../../../assets/images/avatar.png');
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: contain;
         }
 
         .info {
@@ -99,6 +108,14 @@
             padding: 0px;
             margin: 0px;
           }
+        }
+      }
+      .no-comment {
+        p {
+          font-size: 18px;
+          color: #777;
+          font-style: italic;
+          text-align: center;
         }
       }
     }

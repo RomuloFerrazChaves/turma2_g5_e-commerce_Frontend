@@ -5,12 +5,12 @@
   <div class="book-spec">
     <div class="img"></div>
     <div class="spec">
-      <h1>Título do Livro</h1>
-      <p>Autor: Nome do Autor</p>
-      <p>Descrição: Uma breve descrição do livro.</p>
+      <h1>{{anuncio.titulo}}</h1>
+      <p>Autor: {{anuncio.autor}}</p>
+      <p>Descrição: {{anuncio.descricao}}</p>
       <p>Gêneros:</p>
       <mat-chip-set>
-        <mat-chip *ngFor="let genero of generos">{{genero.Nome}}</mat-chip>
+        <mat-chip>{{anuncio.genero}}</mat-chip>
       </mat-chip-set>
     </div>
   </div>
@@ -23,44 +23,14 @@
     <h1>Comentários</h1>
 
     <div class="dialog-box">
-
-      <div class="comment">
-        <div class="profile"></div>
-        <div class="info">
-          <p>Rômulo Ferraz</p>
-          <p>Este é um comentário sobre o livro.</p>
-        </div>
+      <div class="no-comment" *ngIf="comments.length == 0">
+        <p>Seja o primeiro a comentar!</p>
       </div>
-
-      <div class="comment">
+      <div class="comment" *ngFor="let comment of comments">
         <div class="profile"></div>
         <div class="info">
-          <p>Rômulo Ferraz</p>
-          <p>Este é um comentário sobre o livro.</p>
-        </div>
-      </div>
-
-      <div class="comment">
-        <div class="profile"></div>
-        <div class="info">
-          <p>Rômulo Ferraz</p>
-          <p>Este é um comentário sobre o livro.</p>
-        </div>
-      </div>
-
-      <div class="comment">
-        <div class="profile"></div>
-        <div class="info">
-          <p>Rômulo Ferraz</p>
-          <p>Este é um comentário sobre o livro.</p>
-        </div>
-      </div>
-
-      <div class="comment">
-        <div class="profile"></div>
-        <div class="info">
-          <p>Rômulo Ferraz</p>
-          <p>Este é um comentário sobre o livro.</p>
+          <p>{{comment.usuario.nome}}</p>
+          <p>{{comment.texto}}</p>
         </div>
       </div>
 

@@ -23,7 +23,7 @@ export const routes: Routes = [
     component: Register,
   },
   {
-    path:'book-page',
+    path:'book-page/:id',
     component: BookPage,
   }
 ];

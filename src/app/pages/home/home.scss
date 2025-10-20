@@ -132,7 +132,7 @@
             content: "";
             position: absolute;
             inset: 0;
-            background: url(../../../assets/images/book-sample.jpg) center/cover no-repeat;
+            background: url(../../../assets/images/bookCap.png) center/cover no-repeat;
             filter: blur(12px);
             transform: scale(1.1);
             z-index: 0;
@@ -142,7 +142,7 @@
             content: "";
             position: absolute;
             inset: 0;
-            background: url(../../../assets/images/book-sample.jpg) center/contain no-repeat;
+            background: url(../../../assets/images/bookCap.png) center/contain no-repeat;
             z-index: 1;
           }
         }
@@ -170,7 +170,7 @@
 
           h2 {
             font-size: 15px;
-            color: var(--secondary-color);
+            color: var(--terciary-color);
             font-family: 'Roboto';
             margin: 0px 0px 10px;
             font-weight: 400;
@@ -194,6 +194,19 @@
             -webkit-line-clamp: 3;
             /* number of lines to show */
             -webkit-box-orient: vertical;
+          }
+        }
+
+        .genero {
+          background-color: var(--terciary-color);
+          height: 30px;
+          padding: 5px;
+          border-radius: 0px 0px 9px 9px;
+          h3 {
+            font-size: 15px;
+            color: #ffffff;
+            font-family: 'Roboto';
+            margin: 0px;
           }
         }
       }

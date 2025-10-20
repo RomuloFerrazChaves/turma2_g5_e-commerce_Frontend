@@ -41,7 +41,6 @@ export class Login {
   }
 
   login () {
-    console.log('login');
     const formLogin = this.formLogin.getRawValue();
 
     if (this.formLogin.valid) {
@@ -57,7 +56,6 @@ export class Login {
           this.router.navigateByUrl('/home');
         }
       })
-      console.log('formLogin: ', formLogin)
     } else {
       this.formLogin.markAllAsTouched()
       console.log('erro')
