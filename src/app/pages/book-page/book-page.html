@@ -1,39 +1,45 @@
 <app-header></app-header>
-
 <div id="body">
 
   <div class="book-spec">
     <div class="img"></div>
-    <div class="spec">
-      <h1>{{anuncio.titulo}}</h1>
-      <p>Autor: {{anuncio.autor}}</p>
-      <p>Descrição: {{anuncio.descricao}}</p>
-      <p>Gêneros:</p>
-      <mat-chip-set>
-        <mat-chip>{{anuncio.genero}}</mat-chip>
-      </mat-chip-set>
-    </div>
+  <div class="spec">
+    <h1>{{ anuncio?.titulo }}</h1>
+    <p>Autor: {{ anuncio?.autor }}</p>
+    <p>Descrição: {{ anuncio?.descricao }}</p>
+    <p>Gêneros:</p>
+    <mat-chip-set>
+      <mat-chip>{{ anuncio?.genero }}</mat-chip>
+    </mat-chip-set>
+  </div>
   </div>
 
-  <button class="new-comment">
+  <form [formGroup]="commentForm">
+  <mat-form-field class="col-12 input" appearance="outline">
+    <mat-label style="color: #8C8B8B;">Comentário</mat-label>
+    <input matInput formControlName="texto" autocomplete="off">
+  </mat-form-field>
+
+  <button class="new-comment" (click)="addComment()">
     Adicionar Comentário
   </button>
+  </form>
 
   <div class="comments">
     <h1>Comentários</h1>
 
     <div class="dialog-box">
-      <div class="no-comment" *ngIf="comments.length == 0">
+      <div class="no-comment" *ngIf="comments.length === 0">
         <p>Seja o primeiro a comentar!</p>
       </div>
       <div class="comment" *ngFor="let comment of comments">
         <div class="profile"></div>
         <div class="info">
-          <p>{{comment.usuario.nome}}</p>
-          <p>{{comment.texto}}</p>
+          <p>{{comment?.usuario?.nome}}</p>
+          <p>{{comment?.texto}}</p>
         </div>
       </div>
-
     </div>
   </div>
 </div>
+<app-footer></app-footer>

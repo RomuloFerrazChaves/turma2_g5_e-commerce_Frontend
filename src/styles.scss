@@ -38,6 +38,20 @@ body {
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+app-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+app-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
 
 
 .col-1 {

@@ -9,12 +9,12 @@
     <h1>Bem-vindo de volta!</h1>
     <form [formGroup]="formLogin" class="formulario">
 
-        <mat-form-field class="input">
+        <mat-form-field class="input" appearance="outline">
           <mat-label style="color: #8C8B8B;">EMAIL</mat-label>
           <input matInput formControlName="email" placeholder="Informe seu usuário" autocomplete="off">
         </mat-form-field>
 
-        <mat-form-field class="input">
+        <mat-form-field class="input" appearance="outline">
           <mat-label style="color: #8C8B8B;">SENHA</mat-label>
           <input formControlName="senha" placeholder="Informe sua senha" matInput
             [type]="hide ? 'password' : 'text'">

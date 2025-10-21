@@ -19,7 +19,15 @@ export class Header {
     this.router.navigateByUrl('/home');
   }
 
+  redirectProfile() {
+    const user = sessionStorage.getItem("user");
+    const userId = user ? JSON.parse(user).id : null;
+    this.router.navigateByUrl(`/profile-page/${userId}`);
+  }
+
   redirectLogin() {
+    sessionStorage.removeItem("user");
+    sessionStorage.removeItem("token");
     this.router.navigateByUrl('/login');
   }
 }

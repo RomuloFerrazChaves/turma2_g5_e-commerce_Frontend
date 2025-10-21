@@ -9,17 +9,17 @@
     <h1>Seja Bem-Vindo!</h1>
     <form [formGroup]="formCadastro" class="formulario">
 
-        <mat-form-field class="input">
+        <mat-form-field class="input" appearance="outline">
           <mat-label style="color: #8C8B8B;">NOME</mat-label>
           <input matInput formControlName="nome" placeholder="Informe seu nome" autocomplete="off">
         </mat-form-field>
 
-        <mat-form-field class="input">
+        <mat-form-field class="input" appearance="outline">
           <mat-label style="color: #8C8B8B;">EMAIL</mat-label>
           <input matInput formControlName="email" placeholder="Informe seu usuário" autocomplete="off">
         </mat-form-field>
 
-        <mat-form-field class="input">
+        <mat-form-field class="input" appearance="outline">
           <mat-label style="color: #8C8B8B;">SENHA</mat-label>
           <input formControlName="senha" placeholder="Informe sua senha" matInput
             [type]="hide ? 'password' : 'text'">

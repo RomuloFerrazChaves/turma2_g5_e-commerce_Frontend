@@ -39,7 +39,6 @@ export class Register {
   }
 
   cadastro() {
-    console.log('cadastro');
     const formCadastro = this.formCadastro.getRawValue();
 
     if (this.formCadastro.valid) {
@@ -52,7 +51,8 @@ export class Register {
           console.log('erro: ', error)
         },
         next: (rs: any) => {
-          console.log('rs: ', rs)
+          sessionStorage.setItem('user', JSON.stringify(rs.userWithoutPassword));
+          sessionStorage.setItem('token', rs.token);
           const interval = setInterval(() => {
             this.tempoRestante--;
 
@@ -63,7 +63,6 @@ export class Register {
           }, 1000);
         }
       })
-      console.log('formCadastro: ', formCadastro)
     } else {
       this.formCadastro.markAllAsTouched()
       console.log('erro')

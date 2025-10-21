@@ -52,7 +52,8 @@ export class Login {
           console.log('erro: ', error)
         },
         next: (rs: any) => {
-          console.log('rs: ', rs)
+          sessionStorage.setItem('user', JSON.stringify(rs.userWithoutPassword));
+          sessionStorage.setItem('token', rs.token);
           this.router.navigateByUrl('/home');
         }
       })

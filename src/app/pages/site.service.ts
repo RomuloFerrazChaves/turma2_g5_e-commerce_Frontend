@@ -30,4 +30,12 @@ export class SiteService {
   populaComments(AnuncioId: string) {
     return this.http.get(`${urlDev}/comentarios/listByAnuncio/${AnuncioId}`);
   }
+
+  addComment(comment: any) {
+    return this.http.post(`${urlDev}/comentarios/createComentario`, comment);
+  }
+
+  getMe() {
+    return this.http.get(`${urlDev}/users/me`);
+  }
 }

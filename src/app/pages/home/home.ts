@@ -4,9 +4,9 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
+import { Header } from '../components/header/header';
+import { Footer } from '../components/footer/footer';
 import { Router } from '@angular/router';
-import { Header } from "../components/header/header";
-import { Footer } from "../components/footer/footer";
 
 @Component({
   selector: 'app-home',
@@ -47,7 +47,6 @@ export class Home {
           console.log('erro: ', error)
         },
         next: (rs: any) => {
-          console.log('rs: ', rs)
           this.books = rs;
         }
       })

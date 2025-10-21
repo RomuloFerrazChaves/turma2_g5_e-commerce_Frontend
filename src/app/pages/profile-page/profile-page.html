@@ -1,0 +1,28 @@
+<app-header></app-header>
+  <div id="body">
+    <div class="profile">
+      <div class="img">
+      </div>
+      <div class="descricao">
+        <form [formGroup]="formLogin" class="formulario">
+
+        <mat-form-field class="input" appearance="outline">
+          <mat-label style="color: #8C8B8B;">NOME</mat-label>
+          <input matInput formControlName="nome" autocomplete="off">
+        </mat-form-field>
+
+        <mat-form-field class="input" appearance="outline">
+          <mat-label style="color: #8C8B8B;">EMAIL</mat-label>
+          <input matInput formControlName="email" autocomplete="off">
+        </mat-form-field>
+
+        <mat-form-field class="input" appearance="outline">
+          <mat-label style="color: #8C8B8B;">CRIADO EM:</mat-label>
+          <input matInput formControlName="criado" autocomplete="off">
+        </mat-form-field>
+
+      </form>
+      </div>
+    </div>
+  </div>
+<app-footer></app-footer>
