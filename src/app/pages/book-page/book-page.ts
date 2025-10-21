@@ -1,7 +1,7 @@
 import { SiteService } from './../site.service';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, PLATFORM_ID } from '@angular/core';
 import { MatChipsModule } from '@angular/material/chips';
-import {CommonModule} from '@angular/common';
+import {CommonModule, isPlatformBrowser} from '@angular/common';
 import { Header } from '../components/header/header';
 import { Footer } from '../components/footer/footer';
 import { Router } from '@angular/router';
@@ -15,12 +15,12 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } 
   imports: [MatChipsModule, CommonModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule, Header, Footer],
   templateUrl: './book-page.html',
   styleUrl: './book-page.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BookPage {
   public anuncio: any;
   public comments: any[] = [];
   public commentForm!: FormGroup;
+  public userId: string | null = null;
 
 
   constructor(
@@ -28,10 +28,15 @@ export class BookPage {
     private Router: Router,
     private activatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
+    @Inject(PLATFORM_ID) private platformId: Object
   ) { }
 
   ngOnInit(): void {
     const AnuncioId = this.activatedRoute.snapshot.params['id'];
+     if (isPlatformBrowser(this.platformId)) {
+      const user = sessionStorage.getItem('user');
+      this.userId = user ? JSON.parse(user).id : null;
+    }
     this.populaAnuncio(AnuncioId);
     this.populaComments(AnuncioId);
     this.formInitComment();
@@ -50,8 +55,7 @@ export class BookPage {
           console.log('erro: ', error)
         },
         next: (rs: any) => {
-          console.log('rs: ', rs)
-          this.anuncio = rs;
+            this.anuncio = rs;
         }
       })
   }
@@ -62,8 +66,7 @@ export class BookPage {
           console.log('erro: ', error)
         },
         next: (rs: any) => {
-          console.log('rs: ', rs)
-          this.comments = rs;
+            this.comments = rs;
         }
       })
   }
@@ -73,6 +76,10 @@ export class BookPage {
       const user = sessionStorage.getItem('user');
       const AnuncioId = this.activatedRoute.snapshot.params['id'];
       const userId = user ? JSON.parse(user).id : null;
+      if (!userId) {
+        console.log('Usuário não autenticado - comentário não será enviado');
+        return;
+      }
       const comentario = this.commentForm.getRawValue();
       this.SiteService.addComment({
         texto: comentario.texto,
@@ -83,6 +90,7 @@ export class BookPage {
           console.log('erro: ', error)
         },
         next: (rs: any) => {
+          this.commentForm.reset();
           this.populaComments(AnuncioId)
         }
       })

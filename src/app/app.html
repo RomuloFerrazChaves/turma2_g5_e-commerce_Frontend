@@ -1,1 +1,11 @@
-<router-outlet></router-outlet>
+@if(showHeaderFooter) {
+<app-header></app-header>
+}
+
+<main>
+  <router-outlet></router-outlet>
+</main>
+
+@if(showHeaderFooter) {
+<app-footer></app-footer>
+}

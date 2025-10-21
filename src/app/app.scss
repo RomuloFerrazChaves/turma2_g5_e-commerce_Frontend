@@ -1,0 +1,14 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ocupa a altura total da viewport */
+}
+
+main {
+  flex: 1; /* Faz o conteúdo principal crescer e empurrar o footer */
+}
+
+app-footer {
+  width: 100%;
+  margin-top: auto; /* Empurra o footer para o final */
+}

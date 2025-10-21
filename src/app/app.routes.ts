@@ -7,28 +7,28 @@ import { ProfilePage } from './pages/profile-page/profile-page';
 
 export const routes: Routes = [
   {
-    path:'',
+    path: '',
     pathMatch: 'full',
     redirectTo: 'login',
   },
   {
-    path:'home',
+    path: 'home',
     component: Home,
   },
   {
-    path:'login',
+    path: 'login',
     component: Login,
   },
   {
-    path:'register',
+    path: 'register',
     component: Register,
   },
   {
-    path:'book-page/:id',
+    path: 'book-page/:id',
     component: BookPage,
   },
   {
-    path:'profile-page/:userId',
+    path: 'profile-page',
     component: ProfilePage,
-  }
+  },
 ];

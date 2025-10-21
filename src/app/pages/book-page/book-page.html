@@ -1,4 +1,3 @@
-<app-header></app-header>
 <div id="body">
 
   <div class="book-spec">
@@ -35,11 +34,15 @@
       <div class="comment" *ngFor="let comment of comments">
         <div class="profile"></div>
         <div class="info">
-          <p>{{comment?.usuario?.nome}}</p>
+          <p>{{comment?.usuario.nome}}</p>
           <p>{{comment?.texto}}</p>
         </div>
+        @if (comment?.usuarioId == userId) {
+          <div class="options">
+              <img src="../../../assets/icons/vertical-menu.svg" alt="">
+          </div>
+        }
       </div>
     </div>
   </div>
 </div>
-<app-footer></app-footer>

@@ -20,9 +20,7 @@ export class Header {
   }
 
   redirectProfile() {
-    const user = sessionStorage.getItem("user");
-    const userId = user ? JSON.parse(user).id : null;
-    this.router.navigateByUrl(`/profile-page/${userId}`);
+    this.router.navigateByUrl(`/profile-page`);
   }
 
   redirectLogin() {
