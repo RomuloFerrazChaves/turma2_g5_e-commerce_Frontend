@@ -65,7 +65,6 @@
   }
 
   .comments {
-
     h1 {
       font-size: 25px;
       color: #0c0d13;
@@ -111,6 +110,7 @@
             font-weight: bold;
             color: #0c0d13;
           }
+
           p {
             padding: 0px;
             margin: 0px;
@@ -131,6 +131,7 @@
           }
         }
       }
+
       .no-comment {
         p {
           font-size: 18px;
@@ -139,6 +140,123 @@
           text-align: center;
         }
       }
+    }
+  }
+}
+
+/* ---------------- RESPONSIVIDADE ---------------- */
+
+/* Tablets (até 1024px) */
+@media (max-width: 1024px) {
+  #body {
+    padding: 40px 80px;
+    gap: 40px;
+
+    .book-spec {
+      gap: 15px;
+
+      .img {
+        width: 55%;
+        height: 400px;
+      }
+
+      .spec {
+        h1 {
+          font-size: 32px;
+        }
+
+        p {
+          font-size: 18px;
+        }
+      }
+    }
+
+    .comments h1 {
+      font-size: 22px;
+    }
+  }
+}
+
+/* Celulares grandes (até 768px) */
+@media (max-width: 768px) {
+  #body {
+    padding: 30px 30px;
+    gap: 40px;
+
+    .book-spec {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+
+      .img {
+        width: 100%;
+        max-width: 400px;
+        height: 350px;
+      }
+
+      .spec {
+        align-items: center;
+        h1 {
+          font-size: 28px;
+        }
+
+        p {
+          font-size: 17px;
+          padding-left: 0;
+        }
+      }
+    }
+
+    .new-comment {
+      font-size: 15px;
+    }
+
+    .comments {
+      h1 {
+        font-size: 22px;
+        text-align: center;
+      }
+
+      .dialog-box .comment {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+
+        .options {
+          align-self: flex-end;
+        }
+      }
+    }
+  }
+}
+
+/* Celulares pequenos (até 480px) */
+@media (max-width: 480px) {
+  #body {
+    padding: 20px;
+    gap: 30px;
+
+    .book-spec {
+      .img {
+        height: 300px;
+      }
+
+      .spec h1 {
+        font-size: 24px;
+      }
+
+      .spec p {
+        font-size: 16px;
+      }
+    }
+
+    .new-comment {
+      padding: 8px 15px;
+      font-size: 14px;
+    }
+
+    .comments h1 {
+      font-size: 20px;
     }
   }
 }
