@@ -1,220 +1,229 @@
 #page {
   width: 100%;
-  min-height: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   .hero {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    justify-content: center;
-    align-items: center;
-    height: 400px;
-    background:
-      radial-gradient(circle at center,
-        #ffffff 0%,
-        #ffffff 20%,
-        #d9d9d9 55%,
-        #4a4a4a 100%);
+    width: 100%;
+    text-align: center;
+    padding: 100px 20px;
+    background: linear-gradient(180deg, #f9f9f9 0%, #e8e8e8 100%);
     background-attachment: fixed;
 
     h1 {
-      font-size: 42px;
+      width: 100%;
+      font-size: clamp(2rem, 5vw, 3.2rem);
       color: var(--primary-color);
       font-family: 'Roboto';
-      margin: 0px;
-      font-weight: 600;
+      font-weight: 700;
+      margin-bottom: 15px;
+      letter-spacing: 0.5px;
+      line-height: 1.2; /* aumenta o espaçamento vertical entre linhas */
     }
 
     p {
-      font-size: 20px;
+      width: 100%;
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
       color: #af2d6a;
       font-family: 'Roboto';
-      margin: 0px;
-      font-weight: 600;
+      margin: 0 auto;
+      font-weight: 500;
+      max-width: 800px;
     }
   }
 
   #body {
+    width: 100%;
+    max-width: 1400px;
+    padding: 50px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
 
+    /* FILTROS */
     .filters {
       display: flex;
-      gap: 25px;
-      padding: 30px 40px;
+      flex-wrap: wrap;
       justify-content: center;
+      gap: 25px;
 
       .genero {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 15px;
+        gap: 10px;
         cursor: pointer;
-        transition: all ease 0.3s;
+        transition: transform 0.3s ease;
 
         .img {
           border-radius: 50%;
           background-position: center;
           background-repeat: no-repeat;
-          background-size: contain;
-          // filter: brightness(0) saturate(100%) invert(4%) sepia(14%) saturate(752%) hue-rotate(111deg) brightness(95%) contrast(96%);
+          background-size: cover;
           width: 100px;
           height: 100px;
-          border: 1px solid var(--primary-color);
+          border: 2px solid var(--primary-color);
         }
 
         h1 {
-          font-size: 15px;
+          font-size: 14px;
           color: var(--primary-color);
-          font-family: 'Roboto';
-          margin: 0px;
-          font-weight: 400;
+          text-align: center;
+          margin: 0;
         }
       }
 
       .genero:hover {
-        transform: scale(1.05);
+        transform: scale(1.08);
       }
     }
 
+    /* BARRA DE PESQUISA */
     .search-bar {
-      margin: 0 auto;
+      width: 100%;
+      max-width: 800px;
       display: flex;
       align-items: center;
       border: 1px solid var(--primary-color);
-      border-radius: 25px;
-      width: 80%;
-      max-width: 1500px;
+      border-radius: 30px;
+      overflow: hidden;
 
       input {
-        padding: 10px 10px 10px 20px;
+        flex-grow: 1;
+        padding: 12px 18px;
         border: none;
         outline: none;
-        flex-grow: 1;
         font-size: 16px;
-        color: var(--primary-color);
         font-family: 'Roboto';
-        border-right: 1px solid var(--primary-color) !important;
-        border-radius: 25px 0px 0px 25px;
+        color: var(--primary-color);
       }
 
       img {
-        width: 20px;
-        height: 20px;
-        padding: 10px 20px 10px 10px;
+        width: 22px;
+        height: 22px;
+        margin-right: 14px;
         cursor: pointer;
-        filter: brightness(0) saturate(100%) invert(14%) sepia(98%) saturate(3051%) hue-rotate(318deg) brightness(98%) contrast(74%);
       }
-
     }
 
+    /* GRID DE LIVROS */
     .book-grid {
+      width: 100%;
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 30px;
-      padding: 30px 300px;
+      grid-template-columns: repeat(
+        auto-fit,
+        minmax(150px, 1fr)
+      ); /* auto-fit pra manter 2 por linha em telas pequenas */
+      gap: 20px;
+      padding: 0 10px; /* margem lateral mínima */
 
       .book {
         display: flex;
         flex-direction: column;
         border: 1px solid var(--primary-color);
         border-radius: 10px;
-        height: 400px;
-        width: 300px;
+        overflow: hidden;
         cursor: pointer;
-        transition: all ease 0.3s;
+        transition: all 0.3s ease;
+        background: #fff;
 
         .img {
           position: relative;
-          border-radius: 10px 10px 0px 0px;
-          height: 280px;
+          height: 150px;
           overflow: hidden;
-
-          &::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: url(../../../assets/images/bookCap.png) center/cover no-repeat;
-            filter: blur(12px);
-            transform: scale(1.1);
-            z-index: 0;
-          }
-
-          &::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: url(../../../assets/images/bookCap.png) center/contain no-repeat;
-            z-index: 1;
-          }
         }
 
         .description {
-          padding: 5px;
+          padding: 10px;
           display: flex;
           flex-direction: column;
-          gap: 5px;
 
           h1 {
-            font-size: 18px;
-            color: var(--primary-color);
-            font-family: 'Roboto';
-            margin: 0px;
+            font-size: 15px;
             font-weight: 600;
             overflow: hidden;
-            text-overflow: ellipsis;
             display: -webkit-box;
             -webkit-line-clamp: 2;
-            /* number of lines to show */
             -webkit-box-orient: vertical;
-            line-height: 18px;
           }
 
           h2 {
-            font-size: 15px;
-            color: var(--terciary-color);
-            font-family: 'Roboto';
-            margin: 0px 0px 10px;
+            font-size: 13px;
             font-weight: 400;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: -webkit-box;
-            -webkit-line-clamp: 1;
-            /* number of lines to show */
-            -webkit-box-orient: vertical;
+            margin-bottom: 1px;
           }
 
-          p:last-child {
-            font-size: 14px;
-            color: var(--primary-color);
-            font-family: 'Roboto';
-            margin: 0px;
-            font-weight: 400;
+          p {
+            font-size: 12px;
             overflow: hidden;
-            text-overflow: ellipsis;
             display: -webkit-box;
             -webkit-line-clamp: 3;
-            /* number of lines to show */
             -webkit-box-orient: vertical;
           }
         }
 
         .genero {
           background-color: var(--terciary-color);
-          height: 30px;
-          padding: 5px;
-          border-radius: 0px 0px 9px 9px;
+          text-align: center;
+          padding: 6px;
           h3 {
-            font-size: 15px;
-            color: #ffffff;
-            font-family: 'Roboto';
-            margin: 0px;
+            font-size: 13px;
+            color: #fff;
+            margin: 0;
           }
         }
-      }
 
-      .book:hover {
-        transform: scale(1.05);
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        &:hover {
+          transform: translateY(-5px) scale(1.03);
+          box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+        }
       }
+    }
+  }
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 768px) {
+  .hero {
+    padding: 80px 15px;
+    h1 {
+      line-height: 1.4; /* aumenta o espaçamento vertical pra evitar sobreposição */
+    }
+  }
+
+  .book-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    padding: 0 15px; /* garante espaçamento lateral nas bordas */
+  }
+
+  .book {
+    .img {
+      height: 160px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 60px 10px;
+    h1 {
+      line-height: 1.5;
+    }
+  }
+
+  .book-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    padding: 0 12px;
+  }
+
+  .book {
+    .img {
+      height: 140px;
     }
   }
 }

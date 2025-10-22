@@ -5,35 +5,30 @@
   </div>
 
   <div id="body">
-
     <div class="filters">
       <div class="genero" *ngFor="let genero of generos">
         <div class="img" [style.background-image]="'url(' + genero.Imagem + ')'"></div>
-        <h1>{{genero.Nome}}</h1>
+        <h1>{{ genero.Nome }}</h1>
       </div>
     </div>
 
     <div class="search-bar">
-      <input type="text" placeholder="Pesquisar livros por nome..."/>
-      <img src="../../../assets/icons/search-icon.svg" alt="">
+      <input type="text" placeholder="Pesquisar livros por nome..." />
+      <img src="../../../assets/icons/search-icon.svg" alt="" />
     </div>
 
     <div class="book-grid">
-
       <div class="book" *ngFor="let book of books" (click)="RedirectToBookPage(book.id)">
         <div class="img"></div>
         <div class="description">
-          <h1>{{book.titulo}}</h1>
-          <h2>{{book.autor}}</h2>
-          <p>{{book.descricao}}</p>
+          <h1>{{ book.titulo }}</h1>
+          <h2>{{ book.autor }}</h2>
+          <p>{{ book.descricao }}</p>
         </div>
         <div class="genero">
-          <h3>{{book.genero}}</h3>
+          <h3>{{ book.genero }}</h3>
         </div>
       </div>
-
-
     </div>
   </div>
 </section>
-
