@@ -33,7 +33,7 @@ export class SiteService {
   }
 
   deleteComment(CommentId: string) {
-    return this.http.delete(`http://localhost:3000/comments/${CommentId}`);
+    return this.http.delete(`${urlDev}/comentarios/${CommentId}`);
   }
 
   getMe() {
