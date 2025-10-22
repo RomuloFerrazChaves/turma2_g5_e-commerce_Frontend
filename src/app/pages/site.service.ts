@@ -3,13 +3,10 @@ import { Injectable } from '@angular/core';
 import { urlDev } from '../../environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-
 export class SiteService {
-
-  constructor(private http: HttpClient,) { }
-
+  constructor(private http: HttpClient) {}
 
   signUp(user: any) {
     return this.http.post(`${urlDev}/auth/register`, user);
@@ -33,6 +30,10 @@ export class SiteService {
 
   addComment(comment: any) {
     return this.http.post(`${urlDev}/comentarios/createComentario`, comment);
+  }
+
+  deleteComment(CommentId: string) {
+    return this.http.delete(`http://localhost:3000/comments/${CommentId}`);
   }
 
   getMe() {

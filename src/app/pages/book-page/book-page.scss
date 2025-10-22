@@ -84,10 +84,30 @@
         border: 1px solid #0c0d13;
         border-radius: 15px;
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         justify-content: space-between;
         gap: 10px;
         padding: 10px 15px;
+
+        .btn {
+          align-self: center;
+        }
+
+        .info {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+
+          small {
+            font-size: 13px;
+            color: #777;
+            margin-bottom: 3px;
+          }
+
+          p {
+            margin: 0;
+          }
+        }
 
         .profile {
           border-radius: 50%;

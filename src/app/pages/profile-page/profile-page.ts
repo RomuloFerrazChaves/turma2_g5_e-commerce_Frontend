@@ -1,5 +1,11 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { SiteService } from '../site.service';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -9,18 +15,17 @@ import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-profile-page',
-  imports: [MatFormFieldModule, MatInputModule, ReactiveFormsModule, Header, Footer],
+  imports: [MatFormFieldModule, MatInputModule, ReactiveFormsModule],
   templateUrl: './profile-page.html',
-  styleUrl: './profile-page.scss'
+  styleUrl: './profile-page.scss',
 })
 export class ProfilePage {
   public formLogin!: FormGroup;
 
-
-   constructor(
+  constructor(
     private formBuilder: FormBuilder,
     private siteService: SiteService,
-    private activatedRoute: ActivatedRoute,
+    private activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -33,7 +38,7 @@ export class ProfilePage {
       nome: new FormControl('', [Validators.required, Validators.maxLength(100)]),
       email: new FormControl('', [Validators.required, Validators.maxLength(100)]),
       criado: new FormControl('', [Validators.required, Validators.maxLength(50)]),
-    })
+    });
   }
 
   getMe() {
