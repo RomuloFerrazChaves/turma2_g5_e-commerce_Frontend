@@ -38,7 +38,7 @@
           <small>por {{ comment.usuario?.nome || 'Usuário' }}</small>
           <p>{{ comment.texto }}</p>
         </div>
-        @if (comment.usuarioIdStr === userId) {
+        @if (comment.usuarioId === userId) {
         <button type="button" class="btn btn-danger btn-sm" (click)="deleteComment(comment.id)">
           Deletar
         </button>
