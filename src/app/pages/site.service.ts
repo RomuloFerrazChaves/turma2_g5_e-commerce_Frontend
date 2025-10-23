@@ -39,4 +39,8 @@ export class SiteService {
   getMe() {
     return this.http.get(`${urlDev}/users/me`);
   }
+
+  getAnunciosByUser(userId: string) {
+    return this.http.get(`${urlDev}/anuncios/getAnunciosByUser/${userId}`);
+  }
 }

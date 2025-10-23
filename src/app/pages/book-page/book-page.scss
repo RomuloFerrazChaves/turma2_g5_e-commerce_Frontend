@@ -89,9 +89,17 @@
         gap: 10px;
         padding: 10px 15px;
 
-        .btn {
-          align-self: center;
-        }
+          .trash {
+            cursor: pointer;
+            align-self: center;
+            width: 16px;
+            height: 16px;
+            filter: brightness(0) saturate(100%) invert(65%) sepia(86%) saturate(6452%) hue-rotate(336deg) brightness(100%) contrast(101%);
+            transition: all ease 0.3s;
+            &:hover {
+              scale: 1.1;
+            }
+          }
 
         .info {
           display: flex;

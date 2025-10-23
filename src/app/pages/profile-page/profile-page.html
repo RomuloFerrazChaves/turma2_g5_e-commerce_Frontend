@@ -1,26 +1,47 @@
-  <div id="body">
-    <div class="profile">
-      <div class="img">
-      </div>
-      <div class="descricao">
-        <form [formGroup]="formLogin" class="formulario">
+<div id="body">
+  <div class="profile">
+    <div class="img">
+    </div>
+    <div class="descricao">
+      <form [formGroup]="formLogin" class="formulario">
 
         <mat-form-field class="input" appearance="outline">
           <mat-label style="color: #8C8B8B;">NOME</mat-label>
-          <input matInput formControlName="nome" autocomplete="off">
+          <input matInput formControlName="nome" autocomplete="off" (change)="ativarEditar()">
         </mat-form-field>
 
         <mat-form-field class="input" appearance="outline">
           <mat-label style="color: #8C8B8B;">EMAIL</mat-label>
-          <input matInput formControlName="email" autocomplete="off">
+          <input matInput formControlName="email" autocomplete="off" (change)="ativarEditar()">
         </mat-form-field>
 
         <mat-form-field class="input" appearance="outline">
           <mat-label style="color: #8C8B8B;">CRIADO EM:</mat-label>
           <input matInput formControlName="criado" autocomplete="off">
         </mat-form-field>
-
       </form>
+      @if(editarAtivo) {
+      <button class="botao-primario">Editar</button>
+      }
+
+
+      <div class="anuncios">
+        <h1>Meus anúncios:</h1>
+
+        <div class="book-grid">
+          <div class="book" *ngFor="let book of books" (click)="RedirectToBookPage(book.id)">
+            <div class="img"></div>
+            <div class="description">
+              <h1>{{ book.titulo }}</h1>
+              <h2>{{ book.autor }}</h2>
+              <p>{{ book.descricao }}</p>
+            </div>
+            <div class="genero">
+              <h3>{{ book.genero }}</h3>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+</div>
