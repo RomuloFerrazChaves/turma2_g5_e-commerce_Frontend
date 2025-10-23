@@ -13,12 +13,17 @@
     </div>
 
     <div class="search-bar">
-      <input type="text" placeholder="Pesquisar livros por nome..." />
+      <input
+        type="text"
+        placeholder="Pesquisar livros por nome..."
+        (input)="onSearch($event.target.value)"
+        [value]="searchTerm"
+      />
       <img src="../../../assets/icons/search-icon.svg" alt="" />
     </div>
 
     <div class="book-grid">
-      <div class="book" *ngFor="let book of books" (click)="RedirectToBookPage(book.id)">
+      <div class="book" *ngFor="let book of filteredBooks" (click)="RedirectToBookPage(book.id)">
         <div class="img"></div>
         <div class="description">
           <h1>{{ book.titulo }}</h1>

@@ -28,8 +28,22 @@ export class Home {
   ];
 
   public books: any[] = [];
+  public searchTerm: string = '';
+
+  public get filteredBooks(): any[] {
+    if (!this.searchTerm || this.searchTerm.trim() === '') return this.books;
+    const term = this.searchTerm.toLowerCase();
+    return this.books.filter((b: any) => {
+      const titulo = (b && b.titulo) ? String(b.titulo).toLowerCase() : '';
+      return titulo.includes(term);
+    });
+  }
 
   constructor(private router: Router, private SiteService: SiteService) {}
+
+  onSearch(term: string) {
+    this.searchTerm = term;
+  }
 
   ngOnInit(): void {
     this.PopulaAnuncio();
