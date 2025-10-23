@@ -63,11 +63,17 @@
             cursor: pointer;
             transition: all 0.3s ease;
             background: #fff;
+            max-width: 155px;
 
             .img {
               position: relative;
               height: 150px;
               overflow: hidden;
+              width: 100%;
+              background-image: url('../../../assets/images/EstanteInfinita.png');
+              background-position: center;
+              background-repeat: no-repeat;
+              background-size: auto;
             }
 
             .description {
