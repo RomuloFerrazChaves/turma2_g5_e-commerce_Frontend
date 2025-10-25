@@ -51,4 +51,16 @@ export class SiteService {
   editaAnuncio(anuncioId: string, anuncio: any) {
     return this.http.put(`${urlDev}/anuncios/updateAnuncio/${anuncioId}`, anuncio);
   }
+
+  deleteMe() {
+    return this.http.delete(`${urlDev}/users/deleteMe`);
+  }
+
+  salvarAvaliacao(avaliacao: any) {
+    return this.http.post(`${urlDev}/avaliacoes/createAvaliacao`, avaliacao);
+  }
+
+  listByAnuncio(AnuncioId: string) {
+    return this.http.get(`${urlDev}/avaliacoes/listByAnuncio/${AnuncioId}`);
+  }
 }

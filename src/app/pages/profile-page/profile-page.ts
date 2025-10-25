@@ -100,6 +100,16 @@ export class ProfilePage {
         console.log('erro: ', error);
       }, next: (rs: any) => {
         this.books = rs;
+      }
+    });
+  }
+
+  deleteMe() {
+    this.siteService.deleteMe().subscribe({
+      error: (error: any) => {
+        console.log('erro: ', error);
+      }, next: (rs: any) => {
+        this.books = rs;
         console.log('anuncios do user: ', rs);
       }
     });

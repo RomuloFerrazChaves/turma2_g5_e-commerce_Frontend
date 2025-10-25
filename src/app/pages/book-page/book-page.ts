@@ -35,6 +35,8 @@ export class BookPage {
   public comments: any[] = [];
   public commentForm!: FormGroup;
   public userId: string | null = null;
+  public avaliacaoSelecionada: number | null = null;
+  public avaliacaoMedia: number | null = null;
 
   constructor(
     private SiteService: SiteService,
@@ -52,6 +54,7 @@ export class BookPage {
     }
     this.populaAnuncio(AnuncioId);
     this.populaComments(AnuncioId);
+    this.getAvaliacoes(AnuncioId);
     this.formInitComment();
   }
 
@@ -67,7 +70,6 @@ export class BookPage {
         console.log('erro: ', error);
       },
       next: (rs: any) => {
-        console.log('anuncio: ', rs);
         this.anuncio = rs;
       },
     });
@@ -84,13 +86,39 @@ export class BookPage {
     });
   }
 
+  getAvaliacoes(AnuncioId: string) {
+    // O subscribe() espera (rs: Object) => void, baseado no seu serviço.
+    // Usamos 'any' para flexibilidade e fazemos o "cast" (conversão) dentro.
+    this.SiteService.listByAnuncio(AnuncioId).subscribe({
+
+      // 1. Mude 'rs: any[]' para 'rs: any' para satisfazer o TypeScript
+      next: (rs: any) => {
+        // 2. Crie uma nova variável 'avaliacoes' forçando a tipagem para array
+        const avaliacoes = rs as any[];
+
+        // 3. Use a nova variável 'avaliacoes' para os cálculos
+        if (avaliacoes && avaliacoes.length > 0) {
+
+          const total = avaliacoes.reduce((sum, item) => sum + item.avaliacao, 0);
+          this.avaliacaoMedia = total / avaliacoes.length;
+
+        } else {
+          this.avaliacaoMedia = 0;
+          console.log('Nenhuma avaliação encontrada.');
+        }
+      },
+      error: (error: any) => {
+        console.error('Erro ao buscar avaliações:', error);
+      },
+    });
+  }
+
   addComment() {
     if (this.commentForm.valid) {
       const user = sessionStorage.getItem('user');
       const AnuncioId = this.activatedRoute.snapshot.params['id'];
       const userId = user ? JSON.parse(user).id : null;
       if (!userId) {
-        console.log('Usuário não autenticado - comentário não será enviado');
         return;
       }
       const comentario = this.commentForm.getRawValue();
@@ -118,7 +146,6 @@ export class BookPage {
     if (confirm('Tem certeza que deseja deletar este comentário?')) {
       this.SiteService.deleteComment(CommentId).subscribe({
         next: () => {
-          console.log('Comentário deletado com sucesso');
           this.populaComments(AnuncioId);
         },
         error: (error) => {
@@ -144,5 +171,31 @@ export class BookPage {
 
   redirectEditAnouncement(AnuncioId: string) {
     this.Router.navigate([`/edit-anounce/${AnuncioId}`]);
+  }
+
+  onRateChange(event: Event) {
+    const input = event.target as HTMLInputElement;
+    this.avaliacaoSelecionada = Number(input.value);
+    setTimeout(() => {
+      const AnuncioId = this.activatedRoute.snapshot.params['id'];
+      this.salvarAvaliacao(AnuncioId);
+    }, 500);
+  }
+
+  salvarAvaliacao(anuncioId: number) {
+    console.log('chamou')
+    if (!this.avaliacaoSelecionada) return;
+    const body: any = {
+      avaliacao: this.avaliacaoSelecionada,
+      comentario: '',
+      anuncioId,
+    };
+    this.SiteService.salvarAvaliacao(body).subscribe({
+      next: (response) => {
+      },
+      error: (error) => {
+        console.error('Erro ao salvar avaliação:', error);
+      }
+    });
   }
 }

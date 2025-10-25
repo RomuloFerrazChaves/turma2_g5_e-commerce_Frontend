@@ -30,8 +30,36 @@
         gap: 15px;
       }
 
-      .botao-primario {
+      .botao-edit {
         width: 100%;
+        padding: 10px 20px;
+        border-radius: 15px;
+        font-size: 16px;
+        cursor: pointer;
+        background-color: #6AA1E1;
+        color: white;
+        border: none;
+        transition: background-color 0.3s;
+
+        &:hover {
+          background-color: #6A6AE1;
+        }
+      }
+
+      .botao-delete {
+        width: 100%;
+        padding: 10px 20px;
+        border-radius: 15px;
+        font-size: 16px;
+        cursor: pointer;
+        background-color: #ff4d4d;
+        color: white;
+        border: none;
+        transition: background-color 0.3s;
+
+        &:hover {
+          background-color: #e60000;
+        }
       }
     }
 

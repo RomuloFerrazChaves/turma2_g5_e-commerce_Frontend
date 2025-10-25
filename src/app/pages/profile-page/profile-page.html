@@ -22,8 +22,9 @@
         </mat-form-field>
       </form>
       @if(editarAtivo) {
-      <button class="botao-primario">Editar</button>
+      <button class="botao-edit">Editar</button>
       }
+      <button class="botao-delete" (click)="deleteMe()">Deletar</button>
     </div>
 
   </div>
