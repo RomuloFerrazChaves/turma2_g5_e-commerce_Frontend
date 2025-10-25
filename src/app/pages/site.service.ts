@@ -43,4 +43,12 @@ export class SiteService {
   getAnunciosByUser(userId: string) {
     return this.http.get(`${urlDev}/anuncios/getAnunciosByUser/${userId}`);
   }
+
+  deleteAnuncio(id: string) {
+    return this.http.delete(`${urlDev}/anuncios/deleteAnuncio/${id}`);
+  }
+
+  editaAnuncio(anuncioId: string, anuncio: any) {
+    return this.http.put(`${urlDev}/anuncios/updateAnuncio/${anuncioId}`, anuncio);
+  }
 }

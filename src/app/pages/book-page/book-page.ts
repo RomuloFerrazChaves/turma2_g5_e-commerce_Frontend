@@ -67,6 +67,7 @@ export class BookPage {
         console.log('erro: ', error);
       },
       next: (rs: any) => {
+        console.log('anuncio: ', rs);
         this.anuncio = rs;
       },
     });
@@ -125,5 +126,23 @@ export class BookPage {
         },
       });
     }
+  }
+
+  deleteAnuncio(AnuncioId: string) {
+    if (confirm('Tem certeza que deseja deletar este anúncio?')) {
+      this.SiteService.deleteAnuncio(AnuncioId).subscribe({
+        next: () => {
+          alert('Anúncio deletado com sucesso');
+          this.Router.navigateByUrl('/home');
+        },
+        error: (error) => {
+          console.error('Erro ao deletar anúncio:', error);
+        },
+      });
+    }
+  }
+
+  redirectEditAnouncement(AnuncioId: string) {
+    this.Router.navigate([`/edit-anounce/${AnuncioId}`]);
   }
 }

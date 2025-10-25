@@ -230,6 +230,23 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   }
 }
 
+.botao-terciario {
+  background-color: var(--terciary-color);
+  color: white;
+  border-color: var(--terciary-color);
+  border-radius: 10px;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  outline: none;
+  transition: all ease 0.2s;
+  &:hover {
+    scale: 1.01;
+  }
+}
+
 .formulario {
   mat-form-field {
     .mat-mdc-text-field-wrapper {
@@ -272,5 +289,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
     }
 
+  }
+}
+
+.chips-anuncio {
+  .mdc-evolution-chip__text-label .mat-mdc-chip-action-label {
+    background-color: var(--terciary-color) !important;
   }
 }

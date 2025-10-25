@@ -43,7 +43,7 @@ export class ProfilePage {
   formInitLogin() {
     this.formLogin = this.formBuilder.group({
       nome: new FormControl('', [Validators.required, Validators.maxLength(100)]),
-      email: new FormControl('', [Validators.required, Validators.maxLength(100)]),
+      email: new FormControl({ value: '', disabled: true }),
       criado: new FormControl({ value: '', disabled: true }),});
   }
 

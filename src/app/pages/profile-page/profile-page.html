@@ -1,7 +1,8 @@
 <div id="body">
   <div class="profile">
-    <div class="img">
-    </div>
+
+    <div class="img"></div>
+
     <div class="descricao">
       <form [formGroup]="formLogin" class="formulario">
 
@@ -23,25 +24,29 @@
       @if(editarAtivo) {
       <button class="botao-primario">Editar</button>
       }
+    </div>
 
+  </div>
 
-      <div class="anuncios">
-        <h1>Meus anúncios:</h1>
+  <div class="anuncios">
+    <h1>Meus anúncios:</h1>
 
-        <div class="book-grid">
-          <div class="book" *ngFor="let book of books" (click)="RedirectToBookPage(book.id)">
-            <div class="img"></div>
-            <div class="description">
-              <h1>{{ book.titulo }}</h1>
-              <h2>{{ book.autor }}</h2>
-              <p>{{ book.descricao }}</p>
-            </div>
-            <div class="genero">
-              <h3>{{ book.genero }}</h3>
-            </div>
+    <div class="book-grid">
+      <div class="book" *ngFor="let book of books" (click)="RedirectToBookPage(book.id)">
+        <div class="img">
+          <div  [ngStyle]="{ 'background-color': book.ativo === true ? '#5ed75b' : '#d75b5b' }">
           </div>
+        </div>
+        <div class="description">
+          <h1>{{ book.titulo }}</h1>
+          <h2>{{ book.autor }}</h2>
+          <p>{{ book.descricao }}</p>
+        </div>
+        <div class="genero">
+          <h3>{{ book.genero }}</h3>
         </div>
       </div>
     </div>
   </div>
+
 </div>

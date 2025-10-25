@@ -6,23 +6,36 @@
   <div class="book-spec">
     <div class="img"></div>
     <div class="spec">
-      <h1>{{ anuncio?.titulo }}</h1>
+      <span>
+        <h1>{{ anuncio?.titulo }}</h1>
+        @if(anuncio?.usuarioId === userId) {
+          <img class="edit" (click)="redirectEditAnouncement(anuncio?.id)" src="../../../assets/icons/edit.svg" alt="">
+          <img class="trash" (click)="deleteAnuncio(anuncio?.id)" src="../../../assets/icons/trash.svg" alt="">
+        }
+      </span>
       <p>Autor: {{ anuncio?.autor }}</p>
+      <p>Ano: {{ anuncio?.ano }}</p>
+      <p>Editora: {{anuncio?.editora}}</p>
       <p>Descrição: {{ anuncio?.descricao }}</p>
+      <p>Condição: {{anuncio?.condicao}}</p>
       <p>Gêneros:</p>
       <mat-chip-set>
         <mat-chip>{{ anuncio?.genero }}</mat-chip>
       </mat-chip-set>
+
+      @if (anuncio?.tipo === "VENDA") {
+      <h2>R$ {{anuncio?.preco}}</h2>
+      }
     </div>
   </div>
 
   <form [formGroup]="commentForm">
-    <mat-form-field class="col-12 input" appearance="outline">
+    <mat-form-field class="col-12 input" appearance="outline" style="padding-right: 0px;">
       <mat-label style="color: #8c8b8b">Comentário</mat-label>
       <input matInput formControlName="texto" autocomplete="off" />
     </mat-form-field>
 
-    <button class="new-comment" (click)="addComment()">Adicionar Comentário</button>
+    <button class="botao-terciario" (click)="addComment()">Adicionar Comentário</button>
   </form>
 
   <div class="comments">

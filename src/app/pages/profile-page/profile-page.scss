@@ -8,7 +8,6 @@
     border: 6px solid #EEE;
     padding: 30px;
     display: flex;
-    align-items: center;
 
     .img {
       background-image: url("../../../assets/images/avatar.png");
@@ -34,97 +33,110 @@
       .botao-primario {
         width: 100%;
       }
+    }
 
-      .anuncios {
-        h1 {
-          padding-left: 5px;
-          font-size: 15px;
-          margin-bottom: 20px;
-          font-weight: 500;
-          color: var(--terciary-color);
+  }
+
+  .anuncios {
+    h1 {
+      padding-left: 5px;
+      font-size: 15px;
+      margin-bottom: 20px;
+      font-weight: 500;
+      color: var(--terciary-color);
+    }
+
+    .book-grid {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(auto-fit,
+          minmax(150px, 1fr));
+      /* auto-fit pra manter 2 por linha em telas pequenas */
+      gap: 20px;
+      padding: 0 10px;
+      /* margem lateral mínima */
+
+      .book {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid var(--primary-color);
+        border-radius: 10px;
+        overflow: hidden;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        background: #fff;
+        max-width: 230px;
+
+        .img {
+          position: relative;
+          height: 150px;
+          overflow: hidden;
+          background-image: url('../../../assets/images/EstanteInfinita.png');
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: auto;
+          display: flex;
+          align-items: start;
+          justify-content: right;
+          padding: 10px;
+
+          div {
+            border-radius: 50%;
+            width: 15px;
+            height: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+
         }
 
-        .book-grid {
-          width: 100%;
-          display: grid;
-          grid-template-columns: repeat(auto-fit,
-              minmax(150px, 1fr));
-          /* auto-fit pra manter 2 por linha em telas pequenas */
-          gap: 20px;
-          padding: 0 10px;
-          /* margem lateral mínima */
+        .description {
+          padding: 10px;
+          display: flex;
+          flex-direction: column;
 
-          .book {
-            display: flex;
-            flex-direction: column;
-            border: 1px solid var(--primary-color);
-            border-radius: 10px;
+          h1 {
+            font-size: 15px;
+            font-weight: 600;
             overflow: hidden;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            background: #fff;
-            max-width: 155px;
-
-            .img {
-              position: relative;
-              height: 150px;
-              overflow: hidden;
-              width: 100%;
-              background-image: url('../../../assets/images/EstanteInfinita.png');
-              background-position: center;
-              background-repeat: no-repeat;
-              background-size: auto;
-            }
-
-            .description {
-              padding: 10px;
-              display: flex;
-              flex-direction: column;
-
-              h1 {
-                font-size: 15px;
-                font-weight: 600;
-                overflow: hidden;
-                display: -webkit-box;
-                -webkit-line-clamp: 2;
-                -webkit-box-orient: vertical;
-              }
-
-              h2 {
-                font-size: 13px;
-                font-weight: 400;
-                margin-bottom: 1px;
-              }
-
-              p {
-                font-size: 12px;
-                overflow: hidden;
-                display: -webkit-box;
-                -webkit-line-clamp: 3;
-                -webkit-box-orient: vertical;
-              }
-            }
-
-            .genero {
-              background-color: var(--terciary-color);
-              text-align: center;
-              padding: 6px;
-
-              h3 {
-                font-size: 13px;
-                color: #fff;
-                margin: 0;
-              }
-            }
-
-            &:hover {
-              transform: translateY(-5px) scale(1.03);
-              box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
-            }
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
           }
+
+          h2 {
+            font-size: 13px;
+            font-weight: 400;
+            margin-bottom: 1px;
+          }
+
+          p {
+            font-size: 12px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+          }
+        }
+
+        .genero {
+          background-color: var(--terciary-color);
+          text-align: center;
+          padding: 6px;
+
+          h3 {
+            font-size: 13px;
+            color: #fff;
+            margin: 0;
+          }
+        }
+
+        &:hover {
+          transform: translateY(-5px) scale(1.03);
+          box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
         }
       }
     }
-
   }
 }

@@ -4,6 +4,7 @@ import { BookPage } from '../app/pages/book-page/book-page';
 import { Login } from './pages/login/login';
 import { Register } from './pages/register/register';
 import { ProfilePage } from './pages/profile-page/profile-page';
+import { EditAnounce } from './pages/edit-anounce/edit-anounce';
 
 export const routes: Routes = [
   {
@@ -31,4 +32,8 @@ export const routes: Routes = [
     path: 'profile-page',
     component: ProfilePage,
   },
+  {
+    path: 'edit-anounce/:id',
+    component: EditAnounce,
+  }
 ];
