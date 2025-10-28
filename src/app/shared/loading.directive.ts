@@ -15,25 +15,19 @@ export class LoadingDirective {
     const host: HTMLElement = this.el.nativeElement;
 
     if (value) {
-      // mark as busy
       this.renderer.setAttribute(host, 'aria-busy', 'true');
 
-      // if host is a button or has disabled property, disable it
       if (host instanceof HTMLButtonElement) {
-        // store previous
         this.previousDisabled = host.getAttribute('disabled');
         this.renderer.setAttribute(host, 'disabled', 'true');
       } else {
-        // for non-button elements, prevent pointer events
         this.renderer.setStyle(host, 'pointerEvents', 'none');
         this.renderer.setStyle(host, 'opacity', '0.6');
       }
 
-      // add spinner
       if (!this.spinnerEl) {
         this.spinnerEl = this.renderer.createElement('span');
         this.renderer.addClass(this.spinnerEl, 'app-loading-spinner');
-        // simple inline styles for spinner
         this.renderer.setStyle(this.spinnerEl, 'display', 'inline-block');
         this.renderer.setStyle(this.spinnerEl, 'width', '16px');
         this.renderer.setStyle(this.spinnerEl, 'height', '16px');
@@ -44,11 +38,9 @@ export class LoadingDirective {
         this.renderer.setStyle(this.spinnerEl, 'borderRadius', '50%');
         this.renderer.setStyle(this.spinnerEl, 'animation', 'app-loading-spin 0.8s linear infinite');
 
-        // insert spinner after host content
         this.renderer.appendChild(host, this.spinnerEl);
       }
     } else {
-      // remove busy mark
       this.renderer.removeAttribute(host, 'aria-busy');
 
       if (host instanceof HTMLButtonElement) {
@@ -74,7 +66,6 @@ export class LoadingDirective {
   }
 }
 
-// append small keyframes to document head (only once)
 const styleId = 'app-loading-directive-style';
 if (typeof document !== 'undefined' && !document.getElementById(styleId)) {
   const style = document.createElement('style');

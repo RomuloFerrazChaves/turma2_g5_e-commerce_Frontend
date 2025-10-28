@@ -197,7 +197,6 @@ export class BookPage {
   }
 
   salvarAvaliacao(anuncioId: number) {
-    console.log('chamou')
     if (!this.avaliacaoSelecionada) return;
     const body: any = {
       avaliacao: this.avaliacaoSelecionada,
@@ -206,6 +205,7 @@ export class BookPage {
     };
     this.SiteService.salvarAvaliacao(body).subscribe({
       next: (response) => {
+        location.reload();
       },
       error: (error) => {
         console.error('Erro ao salvar avaliação:', error);
