@@ -21,7 +21,7 @@
         </mat-form-field>
 
         <div class="botoes">
-          <button class="botao-primario col-9" type="submit" (click)="login()">Entrar</button>
+          <button class="botao-primario col-9" type="submit" (click)="login()" [appLoading]="isLoggingIn">Entrar</button>
           <p (click)="redirectRegister()">Não possui uma conta? Clique aqui!</p>
         </div>
       </form>

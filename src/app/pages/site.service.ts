@@ -52,6 +52,10 @@ export class SiteService {
     return this.http.put(`${urlDev}/anuncios/updateAnuncio/${anuncioId}`, anuncio);
   }
 
+  editMe(nome: string) {
+    return this.http.put(`${urlDev}/users/editMe`, { nome });
+  }
+
   deleteMe() {
     return this.http.delete(`${urlDev}/users/deleteMe`);
   }

@@ -13,11 +13,17 @@ import { Header } from '../components/header/header';
 import { Footer } from '../components/footer/footer';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-
+import { LoadingDirective } from '../../shared/loading.directive';
 
 @Component({
   selector: 'app-profile-page',
-  imports: [MatFormFieldModule, MatInputModule, ReactiveFormsModule, CommonModule],
+  imports: [
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    CommonModule,
+    LoadingDirective,
+  ],
   templateUrl: './profile-page.html',
   styleUrl: './profile-page.scss',
 })
@@ -27,6 +33,7 @@ export class ProfilePage {
   public nameForm: string = '';
   public emailForm: string = '';
   public books: any[] = [];
+  public isDeletingMe: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -44,7 +51,8 @@ export class ProfilePage {
     this.formLogin = this.formBuilder.group({
       nome: new FormControl('', [Validators.required, Validators.maxLength(100)]),
       email: new FormControl({ value: '', disabled: true }),
-      criado: new FormControl({ value: '', disabled: true }),});
+      criado: new FormControl({ value: '', disabled: true }),
+    });
   }
 
   waitForTokenAndGetMe() {
@@ -86,8 +94,10 @@ export class ProfilePage {
   }
 
   ativarEditar() {
-    if (this.formLogin.get('nome')?.value !== this.nameForm ||
-    this.formLogin.get('email')?.value !== this.emailForm) {
+    if (
+      this.formLogin.get('nome')?.value !== this.nameForm ||
+      this.formLogin.get('email')?.value !== this.emailForm
+    ) {
       this.editarAtivo = true;
     } else {
       this.editarAtivo = false;
@@ -98,25 +108,49 @@ export class ProfilePage {
     this.siteService.getAnunciosByUser(userId).subscribe({
       error: (error: any) => {
         console.log('erro: ', error);
-      }, next: (rs: any) => {
+      },
+      next: (rs: any) => {
         this.books = rs;
-      }
+      },
     });
   }
 
+  editMe() {
+    const formProfile = this.formLogin.getRawValue();
+
+    if (this.formLogin.valid) {
+      this.siteService.editMe(formProfile.nome).subscribe({
+        error: (error: any) => {
+          console.log('erro: ', error);
+        },
+        next: (rs: any) => {
+          this.getMe();
+          this.editarAtivo = false;
+        },
+      });
+    }
+  }
+
   deleteMe() {
-    this.siteService.deleteMe().subscribe({
-      error: (error: any) => {
-        console.log('erro: ', error);
-      }, next: (rs: any) => {
-        this.books = rs;
-        console.log('anuncios do user: ', rs);
-      }
-    });
+    if (confirm('Tem certeza que deseja deletar este comentário?')) {
+      this.isDeletingMe = true;
+      this.siteService.deleteMe().subscribe({
+        error: (error: any) => {
+          console.log('erro: ', error);
+          this.isDeletingMe = false;
+        },
+        next: (rs: any) => {
+          alert('Usuário deletado com sucesso');
+          sessionStorage.removeItem('user');
+          sessionStorage.removeItem('token');
+          this.router.navigateByUrl('/login');
+          this.isDeletingMe = false;
+        },
+      });
+    }
   }
 
   RedirectToBookPage(id: string) {
     this.router.navigate([`/book-page/${id}`]);
   }
-
 }

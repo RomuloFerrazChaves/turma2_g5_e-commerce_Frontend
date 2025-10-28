@@ -26,7 +26,7 @@
         </mat-form-field>
 
         <div class="botoes">
-          <button class="botao-secundario col-9" type="button" (click)="cadastro()">Cadastrar</button>
+          <button class="botao-secundario col-9" type="button" (click)="cadastro()" [appLoading]="isRegistering">Cadastrar</button>
           <p (click)="redirectLogin()">Já possui uma conta? Clique aqui!</p>
         </div>
       </form>

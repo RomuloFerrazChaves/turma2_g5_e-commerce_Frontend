@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { LoadingDirective } from '../../shared/loading.directive';
 import {
   FormBuilder,
   FormControl,
@@ -26,6 +27,7 @@ import {
     MatInputModule,
     ReactiveFormsModule,
     FormsModule,
+    LoadingDirective,
   ],
   templateUrl: './book-page.html',
   styleUrl: './book-page.scss',
@@ -37,6 +39,9 @@ export class BookPage {
   public userId: string | null = null;
   public avaliacaoSelecionada: number | null = null;
   public avaliacaoMedia: number | null = null;
+  public isAddingComment: boolean = false;
+  public isDeletingCommentId: string | null = null;
+  public isDeletingAnuncio: boolean = false;
 
   constructor(
     private SiteService: SiteService,
@@ -122,6 +127,7 @@ export class BookPage {
         return;
       }
       const comentario = this.commentForm.getRawValue();
+      this.isAddingComment = true;
       this.SiteService.addComment({
         texto: comentario.texto,
         anuncioId: AnuncioId,
@@ -129,10 +135,12 @@ export class BookPage {
       }).subscribe({
         error: (error) => {
           console.log('erro: ', error);
+          this.isAddingComment = false;
         },
         next: (rs: any) => {
           this.commentForm.reset();
           this.populaComments(AnuncioId);
+          this.isAddingComment = false;
         },
       });
     } else {
@@ -144,12 +152,15 @@ export class BookPage {
   deleteComment(CommentId: string) {
     const AnuncioId = this.activatedRoute.snapshot.params['id'];
     if (confirm('Tem certeza que deseja deletar este comentário?')) {
+      this.isDeletingCommentId = CommentId;
       this.SiteService.deleteComment(CommentId).subscribe({
         next: () => {
           this.populaComments(AnuncioId);
+          this.isDeletingCommentId = null;
         },
         error: (error) => {
           console.error('Erro ao deletar comentário:', error);
+          this.isDeletingCommentId = null;
         },
       });
     }
@@ -157,13 +168,16 @@ export class BookPage {
 
   deleteAnuncio(AnuncioId: string) {
     if (confirm('Tem certeza que deseja deletar este anúncio?')) {
+      this.isDeletingAnuncio = true;
       this.SiteService.deleteAnuncio(AnuncioId).subscribe({
         next: () => {
           alert('Anúncio deletado com sucesso');
           this.Router.navigateByUrl('/home');
+          this.isDeletingAnuncio = false;
         },
         error: (error) => {
           console.error('Erro ao deletar anúncio:', error);
+          this.isDeletingAnuncio = false;
         },
       });
     }

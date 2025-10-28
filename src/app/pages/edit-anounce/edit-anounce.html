@@ -58,10 +58,10 @@
         </mat-form-field>
       </form>
 
-      @if(editarAtivo) {
-      <button class="botao-edit" (click)="editaAnuncio()">Editar</button>
-      }
-      <button class="botao-delete" (click)="deleteAnuncio(this.anuncio?.id)">Deletar</button>
+  @if(editarAtivo) {
+  <button class="botao-edit" (click)="editaAnuncio()" [appLoading]="isEditingAnuncio">Editar</button>
+  }
+  <button class="botao-delete" (click)="deleteAnuncio(this.anuncio?.id)" [appLoading]="isDeletingAnuncio">Deletar</button>
     </div>
   </div>
 </div>

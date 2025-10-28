@@ -16,6 +16,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { LoadingDirective } from '../../shared/loading.directive';
 
 
 @Component({
@@ -27,6 +28,7 @@ import {
     MatInputModule,
     ReactiveFormsModule,
     FormsModule,
+    LoadingDirective,
   ],
   templateUrl: './edit-anounce.html',
   styleUrl: './edit-anounce.scss',
@@ -48,6 +50,8 @@ export class EditAnounce {
   public ano: any;
   public ativo: boolean = true;
   public editarAtivo: boolean = false;
+  public isEditingAnuncio: boolean = false;
+  public isDeletingAnuncio: boolean = false;
 
   constructor(
     private SiteService: SiteService,
@@ -137,26 +141,32 @@ export class EditAnounce {
       ano: this.formAnuncio.get('ano')?.value,
       ativo: this.ativo,
     };
+    this.isEditingAnuncio = true;
     this.SiteService.editaAnuncio(AnuncioId, anuncioData).subscribe({
         error: (error: any) => {
-          console.error('Erro ao deletar anúncio:', error);
+          console.error('Erro ao editar anúncio:', error);
+          this.isEditingAnuncio = false;
         },
         next: () => {
           alert('Anúncio editado com sucesso');
           this.populaAnuncio(AnuncioId);
+          this.isEditingAnuncio = false;
         }
       });
   }
 
   deleteAnuncio(AnuncioId: string) {
     if (confirm('Tem certeza que deseja deletar este anúncio?')) {
+      this.isDeletingAnuncio = true;
       this.SiteService.deleteAnuncio(AnuncioId).subscribe({
         next: () => {
           alert('Anúncio deletado com sucesso');
           this.Router.navigateByUrl('/home');
+          this.isDeletingAnuncio = false;
         },
         error: (error) => {
           console.error('Erro ao deletar anúncio:', error);
+          this.isDeletingAnuncio = false;
         },
       });
     }

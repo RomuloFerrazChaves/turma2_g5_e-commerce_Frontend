@@ -8,8 +8,8 @@
       <span>
         <h1>{{ anuncio?.titulo }}</h1>
         @if(anuncio?.usuarioId === userId) {
-        <img class="edit" (click)="redirectEditAnouncement(anuncio?.id)" src="../../../assets/icons/edit.svg" alt="">
-        <img class="trash" (click)="deleteAnuncio(anuncio?.id)" src="../../../assets/icons/trash.svg" alt="">
+  <img class="edit" (click)="redirectEditAnouncement(anuncio?.id)" src="../../../assets/icons/edit.svg" alt="" [appLoading]="isDeletingAnuncio">
+  <img class="trash" (click)="deleteAnuncio(anuncio?.id)" src="../../../assets/icons/trash.svg" alt="" [appLoading]="isDeletingAnuncio">
         }
       </span>
       <p>Autor: {{ anuncio?.autor }}</p>
@@ -48,7 +48,7 @@
       <input matInput formControlName="texto" autocomplete="off" />
     </mat-form-field>
 
-    <button class="botao-terciario" (click)="addComment()">Adicionar Comentário</button>
+  <button class="botao-terciario" (click)="addComment()" [appLoading]="isAddingComment">Adicionar Comentário</button>
   </form>
 
   <div class="comments">
@@ -65,7 +65,7 @@
           <p>{{ comment.texto }}</p>
         </div>
         @if (comment.usuarioId === userId) {
-        <img class="trash" (click)="deleteComment(comment.id)" src="../../../assets/icons/trash.svg" alt="">
+  <img class="trash" (click)="deleteComment(comment.id)" src="../../../assets/icons/trash.svg" alt="" [appLoading]="isDeletingCommentId === comment.id">
         }
       </div>
 
