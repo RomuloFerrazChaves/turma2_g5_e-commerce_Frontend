@@ -24,11 +24,13 @@
 
     <div class="book-grid">
       <div class="book" *ngFor="let book of filteredBooks" (click)="RedirectToBookPage(book.id)">
-        <div class="img"></div>
+        <div class="img">
+          <img [src]="book.imagem || '../../../assets/images/bookCap.png'" alt="Capa do livro" class="book-cover-img" />
+        </div>
         <div class="description">
           <h1>{{ book.titulo }}</h1>
           <h2>{{ book.autor }}</h2>
-          <p>{{ book.descricao }}</p>
+          <!-- <p>{{ book.descricao }}</p> -->
         </div>
         <div class="genero">
           <h3>{{ book.genero }}</h3>

@@ -9,15 +9,21 @@
     flex-grow: 1;
     gap: 20px;
 
-    .img {
+    .book-cover-container {
+      max-width: 400px;
+      width: 100%;
+      margin-right: 20px;
+      margin-bottom: 20px;
+      display: inline-block;
+    }
+
+    .book-cover-img {
+      width: 100%;
+      height: auto;
       border-radius: 15px;
-      border: 4px solid #0c0d13;
-      width: 65%;
-      max-width: 600px;
-      background-image: url('../../../assets/images/bookCap.png');
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      object-fit: contain;
+      display: block;
     }
 
     .spec {
@@ -26,7 +32,6 @@
       padding: 10px 10px 0px 0px;
       gap: 20px;
       flex-grow: 1;
-
     }
   }
 
@@ -40,13 +45,13 @@
     border-radius: 15px;
     font-size: 16px;
     cursor: pointer;
-    background-color: #6AA1E1;
+    background-color: #6aa1e1;
     color: white;
     border: none;
     transition: background-color 0.3s;
 
     &:hover {
-      background-color: #6A6AE1;
+      background-color: #6a6ae1;
     }
   }
 
@@ -96,7 +101,8 @@
           align-self: center;
           width: 16px;
           height: 16px;
-          filter: brightness(0) saturate(100%) invert(65%) sepia(86%) saturate(6452%) hue-rotate(336deg) brightness(100%) contrast(101%);
+          filter: brightness(0) saturate(100%) invert(65%) sepia(86%) saturate(6452%)
+            hue-rotate(336deg) brightness(100%) contrast(101%);
           transition: all ease 0.3s;
 
           &:hover {
