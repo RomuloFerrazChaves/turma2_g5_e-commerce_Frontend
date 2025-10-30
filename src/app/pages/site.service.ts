@@ -17,7 +17,7 @@ export class SiteService {
   }
 
   getAnuncios() {
-    return this.http.get(`${urlDev}/anuncios/getAllAnuncios`);
+    return this.http.get(`${urlDev}/anuncios/`);
   }
 
   getAnuncioById(AnuncioId: string) {

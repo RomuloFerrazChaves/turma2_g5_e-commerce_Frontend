@@ -1,0 +1,73 @@
+<div id="body">
+    <div class="create-anuncio">
+        <h1>Criar Novo Anúncio</h1>
+
+        <form (ngSubmit)="onSubmit()" #anuncioForm="ngForm" class="formulario">
+
+            <mat-form-field class="input" appearance="outline">
+                <mat-label>Título</mat-label>
+                <input matInput type="text" name="titulo" [(ngModel)]="anuncio.titulo" required>
+            </mat-form-field>
+
+            <mat-form-field class="input" appearance="outline">
+                <mat-label>Autor</mat-label>
+                <input matInput type="text" name="autor" [(ngModel)]="anuncio.autor" required>
+            </mat-form-field>
+
+            <mat-form-field class="input" appearance="outline">
+                <mat-label>Descrição</mat-label>
+                <textarea matInput name="descricao" [(ngModel)]="anuncio.descricao"></textarea>
+            </mat-form-field>
+
+            <mat-form-field class="input" appearance="outline">
+                <mat-label>ISBN</mat-label>
+                <input matInput type="text" name="isbn" [(ngModel)]="anuncio.isbn">
+            </mat-form-field>
+
+            <mat-form-field class="input" appearance="outline">
+                <mat-label>Editora</mat-label>
+                <input matInput type="text" name="editora" [(ngModel)]="anuncio.editora">
+            </mat-form-field>
+
+            <mat-form-field class="input" appearance="outline">
+                <mat-label>Ano</mat-label>
+                <input matInput type="number" name="ano" [(ngModel)]="anuncio.ano">
+            </mat-form-field>
+
+            <mat-form-field class="input" appearance="outline">
+                <mat-label>Gênero</mat-label>
+                <input matInput type="text" name="genero" [(ngModel)]="anuncio.genero" required>
+            </mat-form-field>
+
+            <mat-form-field class="input" appearance="outline">
+                <mat-label>Preço</mat-label>
+                <input matInput type="number" name="preco" [(ngModel)]="anuncio.preco" step="0.01">
+            </mat-form-field>
+
+            <mat-form-field class="input" appearance="outline">
+                <mat-label>Condição</mat-label>
+                <mat-select name="condicao" [(ngModel)]="anuncio.condicao" required>
+                    <mat-option value="">Selecione</mat-option>
+                    <mat-option value="NOVO">Novo</mat-option>
+                    <mat-option value="SEMINOVO">Semi Novo</mat-option>
+                    <mat-option value="USADO">Usado</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="input" appearance="outline">
+                <mat-label>Tipo</mat-label>
+                <mat-select name="tipo" [(ngModel)]="anuncio.tipo" required>
+                    <mat-option value="">Selecione</mat-option>
+                    <mat-option value="VENDA">Venda</mat-option>
+                    <mat-option value="TROCA">Troca</mat-option>
+                    <mat-option value="COMPRA">Compra</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <button class="botao-cadastrar" type="submit" [disabled]="!anuncioForm.valid">
+                Cadastrar Anúncio
+            </button>
+
+        </form>
+    </div>
+</div>

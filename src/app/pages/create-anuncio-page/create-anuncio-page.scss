@@ -1,0 +1,56 @@
+#body {
+  flex-grow: 1;
+  padding: 90px 180px;
+
+  .create-anuncio {
+    width: 100%;
+    height: 100%;
+    border: 6px solid #EEE;
+    border-radius: 15px;
+    padding: 40px 60px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h1 {
+      color: var(--terciary-color);
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 30px;
+    }
+
+    .formulario {
+      width: 100%;
+      max-width: 600px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      .input {
+        width: 100%;
+      }
+
+      .botao-cadastrar {
+        width: 100%;
+        padding: 12px 20px;
+        border-radius: 15px;
+        font-size: 16px;
+        cursor: pointer;
+        background-color: #6AA1E1;
+        color: white;
+        border: none;
+        transition: background-color 0.3s;
+
+        &:hover {
+          background-color: #6A6AE1;
+        }
+
+        &:disabled {
+          opacity: 0.6;
+          cursor: not-allowed;
+        }
+      }
+    }
+  }
+}

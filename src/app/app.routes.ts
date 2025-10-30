@@ -5,6 +5,7 @@ import { Login } from './pages/login/login';
 import { Register } from './pages/register/register';
 import { ProfilePage } from './pages/profile-page/profile-page';
 import { EditAnounce } from './pages/edit-anounce/edit-anounce';
+import { CreateAnuncioPage } from './pages/create-anuncio-page/create-anuncio-page';
 
 export const routes: Routes = [
   {
@@ -35,5 +36,9 @@ export const routes: Routes = [
   {
     path: 'edit-anounce/:id',
     component: EditAnounce,
+  },
+  {
+    path: 'create-anuncio',
+    component: CreateAnuncioPage,
   }
 ];
