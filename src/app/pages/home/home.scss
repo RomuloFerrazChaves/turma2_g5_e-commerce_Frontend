@@ -116,7 +116,7 @@
 
     /* GRID DE LIVROS */
     .book-grid {
-      width: 100%;
+      width: 75%;
       display: grid;
       grid-template-columns: repeat(
         auto-fit,
@@ -124,7 +124,7 @@
       ); /* auto-fit pra manter 2 por linha em telas pequenas */
       gap: 20px;
       padding: 0 10px; /* margem lateral mínima */
-
+      
       .book {
         display: flex;
         flex-direction: column;
@@ -197,7 +197,7 @@
   }
 }
 
-/* RESPONSIVIDADE */
+/* RESPONSIVIDADE */ 
 @media (max-width: 768px) {
   .hero {
     padding: 80px 15px;
@@ -205,7 +205,7 @@
       line-height: 1.4; /* aumenta o espaçamento vertical pra evitar sobreposição */
     }
   }
-
+  
   .book-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 15px;
@@ -239,3 +239,4 @@
     }
   }
 }
+
