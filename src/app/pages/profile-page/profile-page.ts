@@ -153,4 +153,8 @@ export class ProfilePage {
   RedirectToBookPage(id: string) {
     this.router.navigate([`/book-page/${id}`]);
   }
+
+  RedirectTocreate() {
+    this.router.navigateByUrl('/create-anuncio');
+  }
 }
