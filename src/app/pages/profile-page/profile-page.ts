@@ -110,6 +110,7 @@ export class ProfilePage {
         console.log('erro: ', error);
       },
       next: (rs: any) => {
+        console.log('anuncios do user: ', rs);
         this.books = rs;
       },
     });
@@ -148,6 +149,18 @@ export class ProfilePage {
         },
       });
     }
+  }
+
+  inactivateAnuncio(AnuncioId: string) {
+      this.siteService.inactivateAnuncio(AnuncioId).subscribe({
+        next: (rs: any) => {
+          alert('Anúncio inativado com sucesso');
+          this.getMe();
+        },
+        error: (error: any) => {
+          alert('Erro ao inativar anúncio. Chame um administrador.');
+        },
+      })
   }
 
   RedirectToBookPage(id: string) {

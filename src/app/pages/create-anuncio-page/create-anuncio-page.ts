@@ -1,3 +1,4 @@
+import { SiteService } from './../site.service';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -7,6 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
+import { GENERO } from '../../enums/genero.enum';
 
 @Component({
   selector: 'app-create-anuncio-page',
@@ -15,6 +17,7 @@ import { MatButtonModule } from '@angular/material/button';
   styleUrl: './create-anuncio-page.scss'
 })
 export class CreateAnuncioPage {
+    generos = Object.values(GENERO);
   anuncio = {
     titulo: '',
     autor: '',
@@ -28,10 +31,10 @@ export class CreateAnuncioPage {
     tipo: ''
   };
 
-  constructor(private anuncioService: AnuncioService, private router: Router) { }
+  constructor(private anuncioService: AnuncioService, private router: Router, private SiteService: SiteService) { }
 
   onSubmit() {
-    this.anuncioService.createAnuncio(this.anuncio).subscribe({
+    this.SiteService.createAnuncio(this.anuncio).subscribe({
       next: (res) => {
         alert('Anúncio criado com sucesso!');
         this.router.navigate(['/home']);

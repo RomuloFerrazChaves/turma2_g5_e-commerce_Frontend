@@ -106,7 +106,6 @@
   overflow: hidden;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
   transition: transform 0.2s ease;
-  cursor: pointer;
 
   &:hover {
     transform: translateY(-4px);
@@ -125,11 +124,13 @@
     width: 16px;
     height: 16px;
     border-radius: 50%;
+    cursor: pointer;
   }
 }
 
-.book .description {
+.description {
   padding: 1rem;
+  cursor: pointer;
 
   h1 {
     font-size: 1.1rem;
