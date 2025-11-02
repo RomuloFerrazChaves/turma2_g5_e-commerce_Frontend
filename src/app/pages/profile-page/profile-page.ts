@@ -121,7 +121,7 @@ export class ProfilePage {
     if (this.formLogin.valid) {
       this.siteService.editMe(formProfile.nome).subscribe({
         error: (error: any) => {
-          console.log('erro: ', error);
+          alert('Erro ao editar nome. Chame um administrador.');
         },
         next: (rs: any) => {
           this.getMe();
@@ -132,11 +132,11 @@ export class ProfilePage {
   }
 
   deleteMe() {
-    if (confirm('Tem certeza que deseja deletar este comentário?')) {
+    if (confirm('Tem certeza que deseja deletar este usuário?')) {
       this.isDeletingMe = true;
       this.siteService.deleteMe().subscribe({
         error: (error: any) => {
-          console.log('erro: ', error);
+          alert('Erro ao deletar o usuário. Chame um administrador.');
           this.isDeletingMe = false;
         },
         next: (rs: any) => {
