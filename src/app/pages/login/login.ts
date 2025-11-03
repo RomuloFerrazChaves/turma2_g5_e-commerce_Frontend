@@ -52,7 +52,7 @@ export class Login {
         senha: formLogin.senha,
       }).subscribe({
         error: error => {
-          console.log('erro: ', error)
+          alert('Erro ao efetuar login. Chame um administrador.');
           this.isLoggingIn = false;
         },
         next: (rs: any) => {

@@ -147,16 +147,16 @@ export class EditAnounce {
     };
     this.isEditingAnuncio = true;
     this.SiteService.editaAnuncio(AnuncioId, anuncioData).subscribe({
-      error: (error: any) => {
-        console.error('Erro ao editar anúncio:', error);
-        this.isEditingAnuncio = false;
-      },
-      next: () => {
-        alert('Anúncio editado com sucesso');
-        this.populaAnuncio(AnuncioId);
-        this.isEditingAnuncio = false;
-      },
-    });
+        error: (error: any) => {
+          alert('Erro ao editar anuncio. Chame um administrador.');
+          this.isEditingAnuncio = false;
+        },
+        next: () => {
+          alert('Anúncio editado com sucesso');
+          this.populaAnuncio(AnuncioId);
+          this.isEditingAnuncio = false;
+        }
+      });
   }
 
   deleteAnuncio(AnuncioId: string) {
@@ -169,7 +169,7 @@ export class EditAnounce {
           this.isDeletingAnuncio = false;
         },
         error: (error) => {
-          console.error('Erro ao deletar anúncio:', error);
+          alert('Erro ao deletar anuncio. Chame um administrador.');
           this.isDeletingAnuncio = false;
         },
       });

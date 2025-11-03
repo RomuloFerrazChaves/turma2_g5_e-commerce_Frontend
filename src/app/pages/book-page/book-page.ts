@@ -145,7 +145,7 @@ export class BookPage {
       });
     } else {
       this.commentForm.markAllAsTouched();
-      console.log('erro');
+      alert('Erro ao adicionar comentário. Chame um administrador.');
     }
   }
 
@@ -159,7 +159,7 @@ export class BookPage {
           this.isDeletingCommentId = null;
         },
         error: (error) => {
-          console.error('Erro ao deletar comentário:', error);
+          alert('Erro ao deletar comentário. Chame um administrador.');
           this.isDeletingCommentId = null;
         },
       });
@@ -176,7 +176,7 @@ export class BookPage {
           this.isDeletingAnuncio = false;
         },
         error: (error) => {
-          console.error('Erro ao deletar anúncio:', error);
+          alert('Erro ao deletar anúncio. Chame um administrador.');
           this.isDeletingAnuncio = false;
         },
       });
@@ -208,7 +208,7 @@ export class BookPage {
         location.reload();
       },
       error: (error) => {
-        console.error('Erro ao salvar avaliação:', error);
+          alert('Erro ao salvar avaliação. Chame um administrador.');
       }
     });
   }

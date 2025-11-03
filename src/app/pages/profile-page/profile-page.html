@@ -33,12 +33,12 @@
     <h1>Meus anúncios:</h1>
 
     <div class="book-grid">
-      <div class="book" *ngFor="let book of books" (click)="RedirectToBookPage(book.id)">
+      <div class="book" *ngFor="let book of books">
         <div class="img">
-          <div  [ngStyle]="{ 'background-color': book.ativo === true ? '#5ed75b' : '#d75b5b' }">
+          <div (click)="inactivateAnuncio(book.id)"  [ngStyle]="{ 'background-color': book.ativo === true ? '#5ed75b' : '#d75b5b' }" style="cursor: pointer;">
           </div>
         </div>
-        <div class="description">
+        <div class="description" (click)="RedirectToBookPage(book.id)">
           <h1>{{ book.titulo }}</h1>
           <h2>{{ book.autor }}</h2>
           <p>{{ book.descricao }}</p>
@@ -49,5 +49,7 @@
       </div>
     </div>
   </div>
+
+  <button class="botao-primario" (click)="RedirectTocreate()">Criar novo anúncio</button>
 
 </div>

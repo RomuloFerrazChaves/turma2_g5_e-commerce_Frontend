@@ -51,7 +51,7 @@ export class Register {
         senha: formCadastro.senha,
       }).subscribe({
         error: error => {
-          console.log('erro: ', error)
+          alert('Erro ao efetuar registro. Chame um administrador.');
           this.isRegistering = false;
         },
         next: (rs: any) => {

@@ -44,8 +44,16 @@ export class SiteService {
     return this.http.get(`${urlDev}/anuncios/getAnunciosByUser/${userId}`);
   }
 
+  createAnuncio(anuncioData: any) {
+    return this.http.post(`${urlDev}/anuncios/createAnuncio`, anuncioData);
+  }
+
   deleteAnuncio(id: string) {
     return this.http.delete(`${urlDev}/anuncios/deleteAnuncio/${id}`);
+  }
+
+  inactivateAnuncio(id: string) {
+    return this.http.patch(`${urlDev}/anuncios/inactivateAnuncio/${id}`, {});
   }
 
   editaAnuncio(anuncioId: string, anuncio: any) {
