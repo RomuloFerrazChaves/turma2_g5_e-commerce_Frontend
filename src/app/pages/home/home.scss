@@ -9,12 +9,13 @@
     width: 100%;
     text-align: center;
     padding: 100px 20px;
-    background:
-      radial-gradient(circle at center,
-        #ffffff 0%,
-        #ffffff 20%,
-        #d9d9d9 55%,
-        #4a4a4a 100%);
+    background: radial-gradient(
+      circle at center,
+      #ffffff 0%,
+      #ffffff 20%,
+      #d9d9d9 55%,
+      #4a4a4a 100%
+    );
     background-attachment: fixed;
 
     h1 {
@@ -134,17 +135,19 @@
         cursor: pointer;
         transition: all 0.3s ease;
         background: #fff;
-        max-width: 155px;
+        max-width: 150px;
 
-        .img {
-          position: relative;
-          height: 150px;
-          overflow: hidden;
-          background-image: url('../../../assets/images/EstanteInfinita.png');
-          background-position: center;
-          background-repeat: no-repeat;
-          background-size: auto;
+        .book-cover-container {
+          max-width: 100px;
           width: 100%;
+          display: inline-block;
+        }
+
+        .book-cover-img {
+          width: 100%;
+          height: auto;
+          object-fit: contain;
+          display: block;
         }
 
         .description {
@@ -157,14 +160,16 @@
             font-weight: 600;
             overflow: hidden;
             display: -webkit-box;
-            -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
           }
 
           h2 {
             font-size: 13px;
             font-weight: 400;
-            margin-bottom: 1px;
+            margin-bottom: 0;
+            margin-top: 0;
           }
 
           p {
@@ -172,6 +177,7 @@
             overflow: hidden;
             display: -webkit-box;
             -webkit-line-clamp: 3;
+            line-clamp: 3;
             -webkit-box-orient: vertical;
           }
         }
