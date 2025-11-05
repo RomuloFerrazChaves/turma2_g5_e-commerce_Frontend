@@ -18,7 +18,6 @@ import {
 } from '@angular/forms';
 import { LoadingDirective } from '../../shared/loading.directive';
 
-
 @Component({
   selector: 'app-edit-anounce',
   imports: [
@@ -48,6 +47,7 @@ export class EditAnounce {
   public preco: any;
   public tipo: any;
   public ano: any;
+  public imagem: any;
   public ativo: boolean = true;
   public editarAtivo: boolean = false;
   public isEditingAnuncio: boolean = false;
@@ -83,6 +83,7 @@ export class EditAnounce {
       preco: new FormControl('', [Validators.required, Validators.maxLength(500)]),
       ano: new FormControl('', [Validators.required, Validators.maxLength(500)]),
       tipo: new FormControl('', [Validators.required, Validators.maxLength(500)]),
+      imagem: new FormControl('', [Validators.required, Validators.maxLength(500)]),
     });
   }
 
@@ -93,9 +94,9 @@ export class EditAnounce {
       },
       next: (rs: any) => {
         console.log('anuncio: ', rs);
-        if((this.userId != null && rs.usuarioId !== null) && (this.userId != rs.usuarioId)) {
-            alert('Você não tem permissão para editar este anúncio.');
-            this.Router.navigateByUrl('/home');
+        if (this.userId != null && rs.usuarioId !== null && this.userId != rs.usuarioId) {
+          alert('Você não tem permissão para editar este anúncio.');
+          this.Router.navigateByUrl('/home');
         } else {
           this.anuncio = rs;
           this.titulo = rs.titulo;
@@ -109,18 +110,20 @@ export class EditAnounce {
           this.tipo = rs.tipo;
           this.ano = rs.ano;
           this.ativo = rs.ativo;
+          this.imagem = rs.imagem;
           this.formAnuncio.patchValue({
-          titulo: this.titulo,
-          autor: this.autor,
-          editora: this.editora,
-          descricao: this.descricao,
-          condicao: this.condicao,
-          generos: this.generos,
-          preco: this.preco,
-          isbn: this.isbn,
-          tipo: this.tipo,
-          ano: this.ano,
-        });
+            titulo: this.titulo,
+            autor: this.autor,
+            editora: this.editora,
+            descricao: this.descricao,
+            condicao: this.condicao,
+            generos: this.generos,
+            preco: this.preco,
+            isbn: this.isbn,
+            tipo: this.tipo,
+            ano: this.ano,
+            imagem: this.imagem,
+          });
         }
       },
     });
@@ -139,6 +142,7 @@ export class EditAnounce {
       isbn: this.formAnuncio.get('isbn')?.value,
       tipo: this.formAnuncio.get('tipo')?.value,
       ano: this.formAnuncio.get('ano')?.value,
+      imagem: this.formAnuncio.get('imagem')?.value,
       ativo: this.ativo,
     };
     this.isEditingAnuncio = true;
@@ -177,11 +181,19 @@ export class EditAnounce {
   }
 
   ativarEditar() {
-    if (this.formAnuncio.get('titulo')?.value !== this.titulo ||
-    this.formAnuncio.get('autor')?.value !== this.autor ||
-    this.formAnuncio.get('editora')?.value !== this.editora ||this.formAnuncio.get('descricao')?.value !== this.descricao ||
-    this.formAnuncio.get('condicao')?.value !== this.condicao || this.formAnuncio.get('preco')?.value !== this.preco || this.formAnuncio.get('isbn')?.value !== this.isbn || this.formAnuncio.get('tipo')?.value !== this.tipo || this.formAnuncio.get('ativo')?.value !== this.ativo || this.formAnuncio.get('ano')?.value !== this.ano) {
-
+    if (
+      this.formAnuncio.get('titulo')?.value !== this.titulo ||
+      this.formAnuncio.get('autor')?.value !== this.autor ||
+      this.formAnuncio.get('editora')?.value !== this.editora ||
+      this.formAnuncio.get('descricao')?.value !== this.descricao ||
+      this.formAnuncio.get('condicao')?.value !== this.condicao ||
+      this.formAnuncio.get('preco')?.value !== this.preco ||
+      this.formAnuncio.get('isbn')?.value !== this.isbn ||
+      this.formAnuncio.get('tipo')?.value !== this.tipo ||
+      this.formAnuncio.get('ativo')?.value !== this.ativo ||
+      this.formAnuncio.get('ano')?.value !== this.ano ||
+      this.formAnuncio.get('imagem')?.value !== this.imagem
+    ) {
       this.editarAtivo = true;
     } else {
       this.editarAtivo = false;
